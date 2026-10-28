@@ -62,7 +62,7 @@ npx supabase db push
 The function is `supabase/functions/create-order/index.ts`. It verifies input and allowed origin, rate-limits requests using a hashed client address, and calls the service-role-only database RPC. Supabase supplies `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` inside the Edge Function runtime. Set only the allowed origins yourself:
 
 ```powershell
-npx supabase functions deploy create-order --project-ref YOUR_NONPRODUCTION_PROJECT_REF
+npx supabase functions deploy create-order --project-ref YOUR_NONPRODUCTION_PROJECT_REF --no-verify-jwt
 npx supabase secrets set --project-ref YOUR_NONPRODUCTION_PROJECT_REF "ALLOWED_ORIGINS=https://YOUR_TEST_HOST.example"
 ```
 
