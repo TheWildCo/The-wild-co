@@ -1,64 +1,1213 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Wild Co. — Gift Lab</title>
-<style>
-:root{--site-primary:#78b8a9;--site-on-primary:#153d35;--site-secondary:#f4d96f;--site-on-secondary:#463a0c;--site-background:#fffaf0;--site-on-background:#283b35;--site-font-body:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--site-font-heading:Georgia,"Times New Roman",serif;--site-heading-scale:1;--site-spacing-scale:1;--site-radius-scale:1;--site-decoration-opacity:1;color-scheme:light dark}
-*{box-sizing:border-box}body{margin:0;font-family:var(--site-font-body);background:light-dark(#fffaf0,#171c1a);color:light-dark(#283b35,#f3f3eb)}button,input,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;background-color:var(--site-background);color:var(--site-on-background);border-radius:0;overflow:hidden}.topbar{padding:15px clamp(18px,5vw,70px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #d9e3d9;background:#fffdf7;gap:15px}.brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--site-primary);color:var(--site-on-primary);font-size:23px}.brand strong{font-family:var(--site-font-heading);font-size:22px;letter-spacing:-.4px}.brand small{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:2px}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button,.btn{border:0;border-radius:999px;padding:10px 15px;background:#edf3e9;color:#26463d;font-weight:700;font-size:13px}.nav button.active,.btn.primary{background:var(--site-primary);color:var(--site-on-primary)}.hero{padding:55px clamp(20px,7vw,100px) 42px;display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center;background:linear-gradient(120deg,#fffaf0,#f4f0dc 70%,#e6f1e8)}.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#568e7f}.hero h1{font:clamp(42px,6vw,76px)/.98 var(--site-font-heading);letter-spacing:-2px;margin:16px 0}.hero h1 em{font-weight:400;color:#619c8d}.hero p{max-width:490px;line-height:1.7;color:#5d6e64}.hero .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{padding:13px 19px}.btn.secondary{background:transparent;border:1px solid #adc7b9}.hero-art{min-height:290px;position:relative;display:grid;place-items:center}.giftbox{width:min(340px,80%);height:250px;position:relative;transform:rotate(-5deg);filter:drop-shadow(0 18px 16px #4e5e3b20)}.boxbase{position:absolute;left:12%;right:12%;bottom:6%;height:62%;background:#d4a78a;border:4px solid #c89578;border-radius:9px 9px 18px 18px}.boxtop{position:absolute;left:7%;right:7%;top:21%;height:28%;background:#f6df9b;border:4px solid #e6c777;border-radius:10px;z-index:2}.ribbon{position:absolute;z-index:3;top:21%;bottom:6%;left:47%;width:14%;background:#8ab5a7}.bow{position:absolute;z-index:4;top:8%;left:37%;width:28%;height:23%;border:12px solid #8ab5a7;border-radius:50% 50% 12% 50%;transform:rotate(25deg)}.mini-candle{position:absolute;z-index:5;bottom:35%;left:20%;width:62px;height:60px;border-radius:14px 14px 10px 10px;background:#e9e7d6;border:2px solid #d5d3bf;display:grid;place-items:center;font-size:25px}.mini-card{position:absolute;z-index:5;right:18%;bottom:35%;width:67px;height:75px;background:#b9d9ca;transform:rotate(10deg);display:grid;place-items:center;font-size:28px}.spark{position:absolute;font-size:29px;color:#b18a4b;opacity:var(--site-decoration-opacity)}.s1{top:15%;left:12%}.s2{right:9%;top:25%}.s3{right:12%;bottom:12%}.section{padding:44px clamp(18px,5vw,70px)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}.section h2{font:calc(32px * var(--site-heading-scale))/1.1 var(--site-font-heading);margin:8px 0}.muted{color:#708076;line-height:1.6}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.product{background:#fffdf7;border:1px solid #e6e6d8;border-radius:calc(18px * var(--site-radius-scale));padding:12px;min-width:0}.product-art{height:145px;border-radius:13px;display:grid;place-items:center;font-size:58px;position:relative;overflow:hidden}.product-art:after{content:"";position:absolute;width:150px;height:150px;border:1px solid #ffffff88;border-radius:50%;right:-55px;bottom:-70px}.product h3{font-size:15px;margin:12px 0 4px}.product p{font-size:12px;color:#748078;min-height:30px;margin:0 0 10px}.price{font-weight:800;color:#4b8778}.product .btn{width:100%;margin-top:9px;padding:10px}.gift-layout{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}.builder-panel,.summary,.game-card{background:#fffdf7;border:1px solid #e5e5d8;border-radius:20px;padding:20px}.builder-list{display:grid;gap:12px}.builder-item{display:flex;align-items:center;gap:12px;border:1px solid #e9e9de;border-radius:14px;padding:11px}.builder-item .emoji{width:50px;height:50px;display:grid;place-items:center;border-radius:12px;font-size:27px}.builder-item .info{flex:1}.builder-item strong{display:block;font-size:14px}.builder-item small{color:#7b867d}.qty{display:flex;align-items:center;gap:8px}.qty button{border:0;border-radius:50%;width:28px;height:28px;background:#e7f0e9;color:#31584b;font-weight:800}.summary{position:sticky;top:12px}.summary h3{font:25px var(--site-font-heading);margin:0 0 14px}.sumline{display:flex;justify-content:space-between;gap:12px;margin:12px 0;font-size:14px}.total{font-size:22px;font-weight:850;border-top:1px solid #e5e5d8;padding-top:15px;margin-top:15px}.field{display:grid;gap:6px;margin:15px 0}.field label{font-size:12px;font-weight:800}.field input,.field textarea{width:100%;border:1px solid #dce3d8;border-radius:10px;padding:11px;background:#fff;color:#283b35}.game-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.game-card{display:flex;flex-direction:column;gap:10px}.game-icon{height:105px;border-radius:14px;background:#e8f1e8;display:grid;place-items:center;font-size:43px}.game-card h3{margin:3px 0;font:23px var(--site-font-heading)}.game-card p{font-size:13px;color:#708076;line-height:1.55;flex:1}.game-card .btn{width:100%}.game-area{margin-top:22px;background:#fffdf7;border:1px solid #e5e5d8;border-radius:20px;padding:22px}.game-area h3{font:28px var(--site-font-heading);margin:0 0 8px}.hunt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:460px;margin:20px 0}.hunt-cell{aspect-ratio:1;border:0;border-radius:12px;background:#e7f0e9;font-size:25px;display:grid;place-items:center}.hunt-cell.found{background:#f7e7a8}.memory-grid{display:grid;grid-template-columns:repeat(4,minmax(48px,75px));gap:9px;margin:18px 0}.memory-cell{aspect-ratio:1;border:0;border-radius:12px;background:#86b8a7;color:#24483e;font-size:25px}.memory-cell.open{background:#f5e5a2}.quiz-options{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}.quiz-options button{border:1px solid #b6cec1;border-radius:999px;background:#f0f5ed;padding:11px 16px;color:#294d42}.result{padding:13px 15px;background:#edf5e9;border-radius:12px;color:#31584b;margin:12px 0}.affirmation{font:26px/1.25 var(--site-font-heading);padding:24px;background:#f6e7a6;border-radius:16px;max-width:460px;margin:16px 0}.budget-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.budget-row input{padding:10px;border:1px solid #dce3d8;border-radius:10px;width:130px}.footer{padding:28px clamp(18px,5vw,70px);background:#e6efe4;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#52695e;font-size:12px}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#274e42;color:white;padding:12px 18px;border-radius:999px;box-shadow:0 8px 25px #0002;z-index:20;display:none}.hide{display:none!important}.pill{display:inline-block;background:#f6e7a6;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
-@media(max-width:850px){.hero{grid-template-columns:1fr;gap:5px;padding-top:38px}.hero-art{min-height:245px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gift-layout{grid-template-columns:1fr}.summary{position:static}.game-grid{grid-template-columns:1fr}.game-card{display:grid;grid-template-columns:85px 1fr;column-gap:14px}.game-icon{height:90px;grid-row:span 3}.game-card h3{align-self:end}.game-card p{margin:0}.game-card .btn{grid-column:2}.topbar{align-items:flex-start;flex-direction:column}.nav{width:100%}.nav button{flex:1}.section-head{align-items:start;flex-direction:column}}
-@media(max-width:420px){.hero h1{font-size:43px}.product-art{height:115px}.product{padding:8px}.product h3{font-size:13px}.product p{font-size:11px}.builder-item{padding:8px}.qty{gap:4px}.section{padding-top:32px;padding-bottom:32px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffaf0">
+  <meta name="description" content="Thoughtful little gifts, cheerful stationery and candles. Make someone's day with a gift from The Wild Co.">
+  <meta property="og:title" content="The Wild Co. — little gifts, big feelings">
+  <meta property="og:description" content="Discover happy little gifts and build a gift box that feels like them.">
+  <title>The Wild Co. — Little gifts, big feelings</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #342d2a;
+      --muted: #746c67;
+      --cream: #fffaf0;
+      --paper: #fffdf8;
+      --mint: #e0f2ed;
+      --mint-strong: #9cdbd3;
+      --brand-teal: #a8c3a6;
+      --coral: #f4b7b2;
+      --yellow: #f4dc8c;
+      --lilac: #d8c8ed;
+      --line: #e9e2d8;
+      --green: #537865;
+      --shadow: 0 18px 50px rgba(67, 57, 48, .09);
+      --round: 28px;
+      font-family: "Trebuchet MS", "Avenir Next", Avenir, system-ui, sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); line-height: 1.55; }
+    button, input, select, textarea { font: inherit; }
+    button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    :focus-visible { outline: 3px solid #39745e; outline-offset: 3px; }
+    [hidden] { display: none !important; }
+
+    .skip-link {
+      position: fixed; z-index: 20; top: 8px; left: 8px; transform: translateY(-160%);
+      background: var(--ink); color: white; padding: 12px 16px; border-radius: 12px;
+    }
+    .skip-link:focus { transform: none; }
+    .announcement { padding: 8px 16px; text-align: center; background: var(--brand-teal); color: #173c38; font-size: .79rem; font-weight: 700; letter-spacing: .04em; }
+    .promotion-banner { padding: 8px 16px; background: var(--yellow); color: var(--ink); text-align: center; font-size: .78rem; font-weight: 800; }
+    .site-header {
+      position: sticky; z-index: 10; top: 0; display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; padding: 14px max(5vw, 22px); background: rgba(255,253,248,.94);
+      border-bottom: 1px solid rgba(233,226,216,.85); backdrop-filter: blur(14px);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; min-width: max-content; }
+    .brand-logo { width: 48px; height: 48px; flex: 0 0 auto; border-radius: 50%; }
+    .brand-name { font-size: 1rem; font-weight: 900; line-height: 1; letter-spacing: -.035em; }
+    .brand-name small { display: block; margin-top: 5px; font-size: .57rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .main-nav { display: flex; align-items: center; gap: clamp(16px, 2.8vw, 38px); font-size: .85rem; font-weight: 700; }
+    .main-nav a:hover, .footer-links a:hover { color: var(--green); }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .cart-pill { min-height: 44px; padding: 0 15px; border: 1px solid var(--line); background: white; border-radius: 999px; font-size: .83rem; font-weight: 800; }
+    .menu-toggle { display: none; min-width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 50%; background: white; font-size: 1.1rem; }
+
+    .button {
+      display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 9px;
+      padding: 12px 20px; border: 0; border-radius: 999px; background: var(--green); color: white;
+      cursor: pointer; font-size: .88rem; font-weight: 800; transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(55,109,91,.18); }
+    .button:active { transform: translateY(0); }
+    .button:disabled { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
+    .button.secondary { background: white; color: var(--ink); border: 1px solid var(--line); }
+    .button.coral { background: #e98278; }
+    .text-link { font-size: .86rem; font-weight: 800; text-decoration: underline; text-decoration-color: var(--mint-strong); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--green); font-size: .72rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: "✿"; color: #dc887c; font-size: 1rem; }
+    .section { padding: 88px max(5vw, 22px); }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { letter-spacing: -.055em; line-height: 1.08; }
+    h1 { max-width: 610px; margin: 19px 0; font-size: clamp(2.8rem, 7vw, 5.4rem); }
+    h2 { margin-bottom: 10px; font-size: clamp(2rem, 4vw, 3.25rem); }
+    h3 { font-size: 1.18rem; }
+    .section-heading p, .section-intro { max-width: 510px; margin: 0; color: var(--muted); }
+    .storefront-feedback { position: fixed; z-index: 20; right: 12px; bottom: 76px; max-width: min(440px, calc(100vw - 24px)); margin: 0; padding: 12px 15px; border: 1px solid #e6cc98; border-radius: 12px; background: #fff7dc; color: #5b4b22; box-shadow: var(--shadow); font-size: .79rem; }
+
+    .hero { overflow: hidden; background: var(--mint); }
+    .hero-inner { position: relative; display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 38px; max-width: 1260px; min-height: 590px; margin: 0 auto; padding: 62px max(5vw, 22px); }
+    .hero-copy { position: relative; z-index: 1; }
+    .hero h1 span { color: var(--green); }
+    .hero-copy > p { max-width: 470px; color: #5f6c63; font-size: 1.08rem; }
+    .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 27px; }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 26px; color: #61766b; font-size: .78rem; font-weight: 700; }
+    .hero-note span { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 50%; background: rgba(255,255,255,.65); }
+    .instagram-proof { padding: 27px max(5vw, 22px); border-bottom: 1px solid var(--line); background: var(--paper); }
+    .instagram-proof-inner { max-width: 1030px; display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 0 auto; }
+    .instagram-proof-inner > .instagram-caption { flex-basis: 100%; text-align: right; }
+    .instagram-profile { display: flex; align-items: center; gap: 12px; }
+    .instagram-profile .brand-logo { width: 48px; height: 48px; }
+    .instagram-handle { display: block; font-size: .9rem; font-weight: 900; }
+    .instagram-caption { display: block; color: var(--muted); font-size: .72rem; }
+    .instagram-stats { display: flex; align-items: center; gap: clamp(18px, 5vw, 58px); }
+    .instagram-stat { color: var(--muted); font-size: .77rem; }
+    .instagram-stat strong { display: block; color: var(--ink); font-size: 1rem; }
+    .instagram-proof .button { min-height: 42px; padding: 9px 16px; font-size: .76rem; background: var(--brand-teal); color: #173c38; }
+    .custom-story-section { padding: 36px 22px; background: var(--cream); }
+    .custom-story-card { max-width: 860px; margin: auto; padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); }
+    .custom-story-card h2 { margin: 0 0 10px; }
+    .custom-story-card p { margin: 0; color: var(--muted); }
+    .hero-art { position: relative; min-height: 400px; display: grid; place-items: center; }
+    .hero-art::before { content: ""; position: absolute; width: min(39vw, 445px); aspect-ratio: 1; background: #f8eab9; border-radius: 48% 52% 43% 57% / 56% 44% 56% 44%; transform: rotate(-8deg); }
+    .gift-scene { position: relative; width: min(100%, 530px); filter: drop-shadow(0 22px 24px rgba(58,82,69,.15)); animation: bob 5s ease-in-out infinite; }
+    .sparkle { position: absolute; color: white; font-size: 2rem; }
+    .sparkle.one { top: 11%; left: 12%; }
+    .sparkle.two { right: 7%; top: 23%; font-size: 1.3rem; }
+    .sparkle.three { bottom: 11%; left: 6%; color: #dc887c; font-size: 1.5rem; }
+    @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-9px) rotate(1deg); } }
+    .character-label { position: absolute; right: 5%; bottom: 6%; padding: 9px 13px; border: 1px solid rgba(52,45,42,.08); border-radius: 999px; background: white; color: var(--green); font-size: .75rem; font-weight: 900; transform: rotate(4deg); }
+
+    .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .category-card { min-height: 155px; display: flex; align-items: end; justify-content: space-between; gap: 10px; overflow: hidden; padding: 18px; border-radius: 22px; background: var(--mint); }
+    .category-card:nth-child(2) { background: #fff1c8; }
+    .category-card:nth-child(3) { background: #fce2df; }
+    .category-card:nth-child(4) { background: #eee5f5; }
+    .category-card:nth-child(5) { background: #f9e9cf; }
+    .category-card:nth-child(6) { background: #d9e8f4; }
+    .category-card strong { max-width: 120px; font-size: 1rem; line-height: 1.15; }
+    .category-card .mini-art { width: 85px; align-self: center; transition: transform .2s ease; }
+    .category-card .category-image { height: 75px; border-radius: 12px; object-fit: cover; }
+    .category-card:hover .mini-art { transform: rotate(-7deg) scale(1.08); }
+
+    .shop-section { background: var(--cream); }
+    .shop-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 24px 0; }
+    .filter-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-button { min-height: 44px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: white; cursor: pointer; font-size: .77rem; font-weight: 800; }
+    .filter-button[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: white; }
+    .search-sort { display: flex; flex-wrap: wrap; gap: 9px; }
+    .field, .select-field, .textarea-field { min-height: 44px; padding: 10px 13px; border: 1px solid var(--line); border-radius: 13px; background: white; color: var(--ink); }
+    .field { width: min(235px, 100%); }
+    .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+    .product-card { overflow: hidden; border: 1px solid rgba(233,226,216,.8); border-radius: 23px; background: white; transition: transform .2s ease, box-shadow .2s ease; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .product-art { position: relative; min-height: 215px; display: grid; place-items: center; overflow: hidden; background: var(--mint); }
+    .product-art svg { width: 100%; height: 210px; padding: 8px; }
+    .product-art > img { width: 100%; height: 210px; padding: 10px; object-fit: cover; }
+    .product-card:nth-child(4n+2) .product-art { background: #fff1c8; }
+    .product-card:nth-child(4n+3) .product-art { background: #fce2df; }
+    .product-card:nth-child(4n+4) .product-art { background: #eee5f5; }
+    .product-info { padding: 15px 16px 17px; }
+    .product-info h3 { margin: 2px 0 6px; font-size: 1rem; letter-spacing: -.025em; }
+    .variant-choice { display: grid; gap: 5px; margin: 8px 0; color: var(--muted); font-size: .72rem; font-weight: 800; }
+    .variant-choice .select-field { width: 100%; min-width: 0; min-height: 39px; padding: 8px 10px; font-size: .74rem; }
+    .product-meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: .82rem; }
+    .product-price { font-weight: 900; }
+    .stock-label { color: var(--green); font-size: .69rem; font-weight: 800; }
+    .product-actions { display: flex; gap: 8px; margin-top: 13px; }
+    .product-actions .button { width: 100%; min-height: 44px; padding: 9px; font-size: .75rem; }
+    .empty-message { grid-column: 1/-1; padding: 40px 20px; border: 1px dashed #c9c0b5; border-radius: 20px; color: var(--muted); text-align: center; }
+
+    .gift-banner { background: #f8e1de; }
+    .gift-banner-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 35px; padding: 39px; border-radius: var(--round); background: #fbe9e6; }
+    .gift-banner-art { min-height: 235px; display: grid; place-items: center; border-radius: 20px; background: #fff8f1; }
+    .gift-banner-art svg { width: min(76%, 310px); }
+    .gift-banner-copy p { max-width: 435px; color: var(--muted); }
+
+    .gift-section { background: var(--paper); }
+    .builder-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr); gap: 24px; align-items: start; margin-top: 30px; }
+    .builder-panel, .summary-panel { min-width: 0; padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: white; }
+    .builder-step { padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .builder-step:first-child { padding-top: 0; }
+    .builder-step:last-child { padding-bottom: 0; border-bottom: 0; }
+    .step-heading { display: flex; align-items: center; gap: 10px; margin-bottom: 13px; }
+    .step-number { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--mint); color: var(--green); font-size: .76rem; font-weight: 900; }
+    .step-heading h3 { margin: 0; font-size: 1rem; letter-spacing: -.02em; }
+    .box-choice-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .box-choice { display: grid; gap: 5px; min-height: 78px; padding: 11px; border: 1px solid var(--line); border-radius: 14px; background: white; cursor: pointer; text-align: left; }
+    .box-choice[aria-pressed="true"] { border-color: var(--green); background: #f0faf5; box-shadow: inset 0 0 0 1px var(--green); }
+    .box-choice strong { font-size: .78rem; }
+    .box-choice span { color: var(--muted); font-size: .67rem; }
+    .builder-products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .packaging-select { display: grid; gap: 7px; margin-top: 12px; color: var(--muted); font-size: .73rem; font-weight: 800; }
+    .builder-product { min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 9px; padding: 9px; border: 1px solid var(--line); border-radius: 13px; }
+    .builder-product input { width: 18px; height: 18px; accent-color: var(--green); flex: 0 0 auto; }
+    .builder-product label { display: flex; min-width: 0; flex: 1; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2px 8px; cursor: pointer; font-size: .73rem; font-weight: 800; }
+    .builder-product label span { color: var(--muted); font-size: .68rem; }
+    .builder-product .variant-select { width: 100%; min-width: 0; min-height: 38px; padding: 7px 9px; font-size: .7rem; }
+    .personal-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .personal-fields label { display: grid; gap: 5px; color: var(--muted); font-size: .72rem; font-weight: 800; }
+    .personal-fields label.wide { grid-column: 1/-1; }
+    .personal-fields .field, .personal-fields .textarea-field { width: 100%; }
+    .textarea-field { resize: vertical; }
+    .summary-panel { position: sticky; top: 90px; background: var(--cream); }
+    .preview-scene { display: grid; place-items: center; min-height: 150px; margin-bottom: 13px; border-radius: 16px; background: #f6ecd1; }
+    .preview-scene svg { width: 145px; }
+    .summary-panel h3 { margin-bottom: 14px; }
+    .summary-line { display: flex; justify-content: space-between; gap: 15px; padding: 8px 0; border-bottom: 1px dashed #d9d0c5; font-size: .8rem; }
+    .summary-line.total { margin-top: 7px; border: 0; font-size: 1.02rem; font-weight: 900; }
+    .summary-items { margin: 6px 0; }
+    .summary-note, .form-feedback { color: var(--muted); font-size: .73rem; }
+    .summary-panel .button { width: 100%; margin-top: 11px; }
+    .form-feedback { min-height: 1.3em; margin: 10px 0 0; color: #9c3d34; }
+
+    .play-section { background: #f5f0f8; }
+    .game-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; margin-top: 28px; }
+    .game-card { padding: 22px; border: 1px solid rgba(52,45,42,.08); border-radius: 21px; background: white; }
+    .game-card.wide { grid-column: 1/-1; }
+    .game-title { display: flex; align-items: center; gap: 11px; margin-bottom: 7px; }
+    .game-icon { width: 40px; height: 40px; display: grid; flex: 0 0 auto; place-items: center; border-radius: 14px; background: var(--mint); font-size: 1.3rem; }
+    .game-title h3 { margin: 0; font-size: 1.03rem; }
+    .game-description { margin-bottom: 15px; color: var(--muted); font-size: .79rem; }
+    .game-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
+    .game-controls .button { min-height: 44px; padding: 9px 14px; font-size: .76rem; }
+    .game-status { min-height: 1.45em; margin: 11px 0 0; color: var(--green); font-size: .79rem; font-weight: 800; }
+    .hunt-board { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
+    .hunt-target { min-height: 75px; border: 1px solid var(--line); border-radius: 14px; background: var(--cream); cursor: pointer; font-size: 1.7rem; }
+    .hunt-target.found { border-color: #9acfb7; background: #eaf7ef; }
+    .memory-board { display: grid; grid-template-columns: repeat(4, minmax(44px, 1fr)); gap: 7px; max-width: 350px; }
+    .memory-card { min-height: 60px; border: 1px solid var(--line); border-radius: 12px; background: #d9eee5; cursor: pointer; font-size: 1.35rem; font-weight: 900; }
+    .memory-card[aria-pressed="true"] { background: #fff2c6; }
+    .mood-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .mood-options .filter-button { min-height: 44px; }
+    .affirmation-box { min-height: 74px; display: grid; place-items: center; padding: 16px; border-radius: 15px; background: #fff5ca; text-align: center; font-size: .93rem; font-weight: 800; }
+    .budget-result { margin-top: 12px; padding: 12px; border-radius: 13px; background: var(--mint); font-size: .8rem; }
+    .tiny-label { margin: 0 0 8px; color: var(--muted); font-size: .71rem; }
+    .game-controls input[type="number"] { width: 145px; }
+
+    .reassurance { background: var(--mint); }
+    .reassurance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .reassurance-card { padding: 23px; border-radius: 18px; background: rgba(255,255,255,.72); }
+    .reassurance-card span { font-size: 1.5rem; }
+    .reassurance-card h3 { margin: 10px 0 6px; font-size: 1rem; }
+    .reassurance-card p { margin: 0; color: var(--muted); font-size: .8rem; }
+    .site-footer { padding: 53px max(5vw, 22px) 25px; background: #f7f0e5; color: var(--ink); }
+    .footer-inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; max-width: 1160px; margin: 0 auto; }
+    .footer-brand { max-width: 320px; color: var(--muted); font-size: .84rem; }
+    .footer-brand .brand { margin-bottom: 16px; color: var(--ink); }
+    .footer-links { display: grid; justify-items: start; gap: 10px; color: #625a54; font-size: .8rem; }
+    .footer-links strong { margin-bottom: 3px; color: var(--ink); font-size: .9rem; }
+    .footer-bottom { max-width: 1160px; display: flex; justify-content: space-between; gap: 15px; margin: 42px auto 0; padding-top: 18px; border-top: 1px solid #ded5c9; color: var(--muted); font-size: .72rem; }
+    .footer-bottom a { text-decoration: underline; text-underline-offset: 3px; }
+    .mobile-nav { display: none; }
+
+    @media (max-width: 900px) {
+      .hero-inner { min-height: 520px; gap: 12px; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .main-nav { gap: 15px; }
+      .main-nav a { font-size: .78rem; }
+    }
+    @media (max-width: 680px) {
+      html { scroll-padding-top: 74px; }
+      .announcement { font-size: .7rem; }
+      .site-header { min-height: 66px; gap: 4px; padding: 9px 16px; }
+      .brand-logo { width: 38px; height: 38px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .main-nav { position: absolute; top: calc(100% + 1px); left: 0; right: 0; display: none; padding: 12px 18px 18px; border-bottom: 1px solid var(--line); background: var(--paper); }
+      .main-nav.open { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+      .main-nav a { min-height: 44px; display: flex; align-items: center; padding: 0 12px; border-radius: 10px; font-size: .86rem; }
+      .header-actions { margin-left: auto; }
+      .cart-pill { min-height: 40px; padding: 0 11px; font-size: .75rem; }
+      .section { padding: 65px 18px; }
+      .instagram-proof { padding: 20px 18px; }
+      .instagram-proof-inner { flex-wrap: wrap; gap: 15px; }
+      .instagram-stats { order: 3; width: 100%; justify-content: space-between; }
+      .instagram-proof .button { margin-left: auto; }
+      .instagram-proof-inner > .instagram-caption { order: 4; text-align: left; }
+      .section-heading { align-items: start; flex-direction: column; margin-bottom: 23px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 0; min-height: auto; padding-top: 51px; padding-bottom: 32px; }
+      .hero-copy > p { font-size: .98rem; }
+      .hero-art { min-height: 290px; margin-top: 5px; }
+      .hero-art::before { width: 270px; }
+      .gift-scene { width: min(100%, 370px); }
+      .character-label { right: 8%; bottom: 4%; }
+      .hero-ctas { align-items: stretch; }
+      .hero-ctas .button { flex: 1; padding-inline: 13px; font-size: .78rem; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .category-card { min-height: 130px; padding: 14px; border-radius: 17px; }
+      .category-card .mini-art { width: 66px; }
+      .category-card strong { font-size: .87rem; }
+      .shop-tools { align-items: stretch; }
+      .search-sort { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+      .search-sort .field, .search-sort .select-field { width: 100%; min-width: 0; }
+      .product-grid { gap: 11px; }
+      .product-art { min-height: 150px; }
+      .product-art svg { height: 155px; }
+      .product-art > img { height: 155px; }
+      .product-info { padding: 12px; }
+      .product-info h3 { font-size: .9rem; }
+      .product-meta { align-items: start; flex-direction: column; gap: 3px; }
+      .product-actions { margin-top: 10px; }
+      .gift-banner-inner { grid-template-columns: 1fr; gap: 20px; padding: 20px; border-radius: 21px; }
+      .gift-banner-art { min-height: 180px; }
+      .builder-grid { grid-template-columns: 1fr; gap: 14px; }
+      .builder-panel, .summary-panel { padding: 17px; }
+      .summary-panel { position: static; }
+      .game-grid { grid-template-columns: 1fr; }
+      .game-card.wide { grid-column: auto; }
+      .hunt-target { min-height: 57px; font-size: 1.35rem; }
+      .reassurance-grid { grid-template-columns: 1fr; gap: 10px; }
+      .reassurance-card { padding: 17px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 28px 18px; }
+      .footer-brand { grid-column: 1/-1; }
+      .footer-bottom { flex-direction: column; }
+      .mobile-nav { position: fixed; z-index: 9; right: 10px; bottom: 10px; left: 10px; display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; padding: 7px; border: 1px solid rgba(52,45,42,.09); border-radius: 20px; background: rgba(255,253,248,.96); box-shadow: 0 8px 30px rgba(52,45,42,.13); backdrop-filter: blur(12px); }
+      .mobile-nav a { min-height: 46px; display: grid; place-items: center; gap: 0; border-radius: 14px; color: var(--muted); font-size: .63rem; font-weight: 800; }
+      .mobile-nav a span { font-size: 1rem; line-height: 1; }
+      .site-footer { padding-bottom: 100px; }
+    }
+    @media (max-width: 360px) {
+      .brand-name { font-size: .9rem; }
+      .brand-name small { display: none; }
+      .header-actions { gap: 6px; }
+      .hero h1 { font-size: 2.65rem; }
+      .hero-ctas { flex-direction: column; }
+      .category-card { min-height: 118px; }
+      .category-card .mini-art { width: 56px; }
+      .builder-products { grid-template-columns: 1fr; }
+      .box-choice-row { grid-template-columns: 1fr; }
+      .box-choice { min-height: 60px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-<div class="app" id="app">
-<header class="topbar"><div class="brand"><div class="logo">✿</div><div><strong>The Wild Co.</strong><small>The little gift lab</small></div></div><nav class="nav"><button class="active" data-page="home">Home</button><button data-page="shop">Shop</button><button data-page="builder">Gift Studio</button><button data-page="games">Play & Discover</button></nav></header>
-<main>
-<section id="home" class="page">
-<div class="hero"><div><span class="eyebrow">Little things. Big feelings.</span><h1>Make someone<br><em>feel special.</em></h1><p>Build a thoughtful gift box, discover your gifting mood, and play a few little games along the way. Made for moments worth remembering.</p><div class="actions"><button class="btn primary" data-go="builder">Build a gift box ↗</button><button class="btn secondary" data-go="games">Play a little game</button></div><p style="font-size:11px">A fan-made concept prototype · Sample prices in LKR</p></div><div class="hero-art"><span class="spark s1">✦</span><span class="spark s2">✿</span><span class="spark s3">♡</span><div class="giftbox"><div class="boxbase"></div><div class="ribbon"></div><div class="boxtop"></div><div class="bow"></div><div class="mini-candle">☼</div><div class="mini-card">♡</div></div></div></div>
-<section class="section"><div class="section-head"><div><span class="eyebrow">A little something for everyone</span><h2>Small gifts, big smiles</h2><div class="muted">Explore a few favourites for your next thoughtful moment.</div></div><button class="btn secondary" data-go="shop">Browse the collection →</button></div><div class="product-grid" id="featured"></div></section>
-<section class="section" style="background:#f1f4e7"><div class="section-head"><div><span class="eyebrow">Play your way</span><h2>There's a little surprise for you</h2><div class="muted">Discover gifts, match the pairs, hunt for hidden treasures, and more.</div></div></div><div class="game-grid" id="homeGames"></div></section>
-</section>
-<section id="shop" class="page hide"><section class="section"><div class="section-head"><div><span class="eyebrow">The little collection</span><h2>Shop the good stuff</h2><div class="muted">Concept products and illustrative LKR prices. Replace these with approved real items before launch.</div></div></div><div class="product-grid" id="catalog"></div></section></section>
-<section id="builder" class="page hide"><section class="section"><div class="section-head"><div><span class="eyebrow">Your gift, your way</span><h2>Build your own gift box</h2><div class="muted">Choose a few thoughtful things and add a message from the heart.</div></div><span class="pill">Prices in LKR</span></div><div class="gift-layout"><div class="builder-panel"><h3 style="font:25px var(--site-font-heading);margin-top:0">Choose your little treasures</h3><div class="builder-list" id="builderItems"></div><div class="field"><label for="giftMessage">Your personal message</label><textarea id="giftMessage" rows="3" placeholder="A little note to make their day..."></textarea></div><div class="field"><label for="recipient">Gift recipient (optional)</label><input id="recipient" placeholder="e.g. Amaya"></div></div><aside class="summary"><h3>Your gift preview</h3><div id="summaryItems" class="muted">Your box is waiting for its first treasure.</div><div class="sumline"><span>Packaging</span><span id="packCost">LKR 450</span></div><div class="sumline"><span>Items subtotal</span><span id="itemSubtotal">LKR 0</span></div><div class="sumline total"><span>Estimated total</span><span id="grandTotal">LKR 450</span></div><p class="muted" style="font-size:11px">Sample pricing only. Shipping and payment are not included in this prototype.</p><button class="btn primary" style="width:100%" id="orderBtn">Prepare WhatsApp order ↗</button><button class="btn secondary" style="width:100%;margin-top:8px" id="resetBox">Start again</button><div id="orderNotice" class="result hide"></div></aside></div></section></section>
-<section id="games" class="page hide"><section class="section"><div class="section-head"><div><span class="eyebrow">Play & discover</span><h2>Welcome to the little fun corner</h2><div class="muted">Five mini experiences to make gift-finding a little more delightful.</div></div></div><div class="game-grid" id="allGames"></div><div class="game-area" id="gameArea"><h3>Choose a game to begin</h3><p class="muted">No account needed. Just play for fun.</p></div></section></section>
-</main><footer class="footer"><div><strong style="font-family:var(--site-font-heading);font-size:18px">The Wild Co. · Gift Lab</strong><div style="margin-top:6px">An independent concept prototype, not an official store.</div></div><div>Sample currency: Sri Lankan rupees (LKR)<br>Built as a zero-budget front-end demo.</div></footer>
-</div><div class="toast" id="toast"></div>
-<script>
-const products=[
-{id:'bloom',name:'Bloom Candle',desc:'A little glow for cosy evenings',price:2450,emoji:'🕯️',bg:'#f7e8a9',category:'Candles'},
-{id:'bubble',name:'Bubble Candle',desc:'Playful shape, soft pastel mood',price:1850,emoji:'🫧',bg:'#dce9f3',category:'Candles'},
-{id:'affirm',name:'Affirmation Cards',desc:'Tiny reminders for brighter days',price:950,emoji:'💌',bg:'#f7d9e1',category:'Stationery'},
-{id:'stationery',name:'Stationery Bundle',desc:'Paper goods for your happy place',price:1750,emoji:'✏️',bg:'#d8eadb',category:'Stationery'},
-{id:'lagoon',name:'Lagoon Candle',desc:'A fresh little statement piece',price:2650,emoji:'🌊',bg:'#cce7e5',category:'Candles'},
-{id:'giftcard',name:'Greeting Card',desc:'Say it with a handwritten note',price:450,emoji:'💐',bg:'#f3d9c6',category:'Cards'},
-{id:'planner',name:'Mini Planner',desc:'Make room for lovely little plans',price:1250,emoji:'📒',bg:'#e5def3',category:'Stationery'},
-{id:'stickers',name:'Sticker Sheet',desc:'A sprinkle of colour for your pages',price:550,emoji:'🌼',bg:'#f7e9d2',category:'Stationery'}
-];
-const games=[
-{id:'hunt',name:'The Wild Little Hunt',emoji:'🔎',desc:'Find five hidden treasures around the board. How quickly can you spot them?',button:'Start the hunt'},
-{id:'memory',name:'The Little Match Game',emoji:'🃏',desc:'Flip the cards and match the pairs. Try to finish in as few moves as you can.',button:'Play memory'},
-{id:'mood',name:'What’s Your Gift Mood?',emoji:'🌈',desc:'Pick a vibe and discover a gift idea that matches your moment.',button:'Find my mood'},
-{id:'affirmation',name:'A Little Affirmation',emoji:'💛',desc:'Open a tiny note of encouragement when you need a little lift.',button:'Pick a note'},
-{id:'budget',name:'Gift Budget Challenge',emoji:'🎁',desc:'Set a budget in LKR and find a thoughtful combination that fits.',button:'Try the challenge'}
-];
-const cart={};let huntFound=new Set(),memoryCards=[],memoryOpen=[],memoryMatched=new Set(),memoryMoves=0,moodStep=0,moodAnswers=[];const $=s=>document.querySelector(s);const fmt=n=>'LKR '+Number(n).toLocaleString('en-LK');
-function toast(s){const t=$('#toast');t.textContent=s;t.style.display='block';setTimeout(()=>t.style.display='none',2100)}
-function productCard(p){return `<article class="product"><div class="product-art" style="background:${p.bg}">${p.emoji}</div><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${fmt(p.price)}</div><button class="btn primary" data-add="${p.id}">Add to gift box +</button></article>`}
-function renderProducts(){ $('#featured').innerHTML=products.slice(0,4).map(productCard).join('');$('#catalog').innerHTML=products.map(productCard).join('');$('#builderItems').innerHTML=products.map(p=>`<div class="builder-item"><div class="emoji" style="background:${p.bg}">${p.emoji}</div><div class="info"><strong>${p.name}</strong><small>${fmt(p.price)}</small></div><div class="qty"><button data-minus="${p.id}" aria-label="Remove one">−</button><b id="qty-${p.id}">${cart[p.id]||0}</b><button data-plus="${p.id}" aria-label="Add one">+</button></div></div>`).join('');updateCart()}
-function updateCart(){document.querySelectorAll('[id^="qty-"]').forEach(el=>{const id=el.id.slice(4);el.textContent=cart[id]||0});const chosen=products.filter(p=>cart[p.id]);const subtotal=chosen.reduce((s,p)=>s+p.price*(cart[p.id]||0),0);$('#summaryItems').innerHTML=chosen.length?chosen.map(p=>`<div class="sumline"><span>${p.emoji} ${p.name} × ${cart[p.id]}</span><span>${fmt(p.price*cart[p.id])}</span></div>`).join(''):'Your box is waiting for its first treasure.';$('#itemSubtotal').textContent=fmt(subtotal);$('#grandTotal').textContent=fmt(subtotal+(chosen.length?450:0));$('#packCost').textContent=fmt(chosen.length?450:0)}
-function renderGames(target){$(target).innerHTML=games.map(g=>`<article class="game-card"><div class="game-icon">${g.emoji}</div><h3>${g.name}</h3><p>${g.desc}</p><button class="btn primary" data-game="${g.id}">${g.button} →</button></article>`).join('')}
-function go(page){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('hide',p.id!==page));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));window.scrollTo({top:0,behavior:'smooth'})}
-function launchGame(id){go('games');const area=$('#gameArea');if(id==='hunt')drawHunt();if(id==='memory')drawMemory();if(id==='mood')drawMood();if(id==='affirmation')drawAffirmation();if(id==='budget')drawBudget();area.scrollIntoView({behavior:'smooth',block:'start'})}
-function drawHunt(){huntFound=new Set();const targets=['✿','♡','★','☼','🌼'];const cells=Array.from({length:25},(_,i)=>({i,emoji:targets.includes(['☁','✿','🍃','♡','☼','✦','🌼','☁','♡','🍀','★','☼','✿','🍃','♡','✦','☁','🌼','🍀','★','♡','☼','✦','✿','🍃'][i])?['☁','✿','🍃','♡','☼','✦','🌼','☁','♡','🍀','★','☼','✿','🍃','♡','✦','☁','🌼','🍀','★','♡','☼','✦','✿','🍃'][i]:'☁'}));const wanted=new Set();while(wanted.size<5)wanted.add(Math.floor(Math.random()*25));const arr=[...wanted];const icons=['✿','♡','★','☼','🌼'];$('#gameArea').innerHTML=`<h3>The Wild Little Hunt</h3><p class="muted">Find these five treasures hidden in the garden. Tap a tile to reveal it.</p><div class="result">Find: ${icons.join('　')} <strong id="huntCount">0 / 5 found</strong></div><div class="hunt-grid">${cells.map((c,i)=>`<button class="hunt-cell" data-hunt="${i}" data-wanted="${wanted.has(i)?icons[arr.indexOf(i)]:''}" aria-label="Hidden tile">?</button>`).join('')}</div><p class="muted" id="huntMessage">Good luck, treasure hunter!</p><button class="btn secondary" data-game="hunt">Play again</button>`;}
-function drawMemory(){const faces=['🕯️','💌','🌼','🎁','🫧','✏️'];memoryCards=[...faces,...faces].sort(()=>Math.random()-.5);memoryOpen=[];memoryMatched=new Set();memoryMoves=0;$('#gameArea').innerHTML=`<h3>The Little Match Game</h3><p class="muted">Find all six pairs. Every two flips count as one move.</p><div class="result">Moves: <strong id="moves">0</strong> · Matched: <strong id="matched">0 / 6</strong></div><div class="memory-grid">${memoryCards.map((f,i)=>`<button class="memory-cell" data-memory="${i}">?</button>`).join('')}</div><p id="memoryMessage" class="muted">Flip any card to begin.</p><button class="btn secondary" data-game="memory">Shuffle & play again</button>`}
-function drawMood(){moodStep=0;moodAnswers=[];showMoodStep()}
-function showMoodStep(){const questions=[{q:'What feeling are you gifting?',opts:['Cosy & calm','Bright & cheerful','Creative & playful','Thoughtful & kind']},{q:'What is the occasion?',opts:['Birthday','Thank you','Just because','A little self-care']},{q:'Pick a colour mood',opts:['Sage green','Butter yellow','Soft pink','Lilac blue']}];const q=questions[moodStep];$('#gameArea').innerHTML=`<h3>What’s Your Gift Mood?</h3><p class="muted">Question ${moodStep+1} of ${questions.length}</p><h4>${q.q}</h4><div class="quiz-options">${q.opts.map(o=>`<button data-mood="${o}">${o}</button>`).join('')}</div><p class="muted">There are no wrong answers — choose what feels right.</p>`}
-function showMoodResult(){const a=moodAnswers.join(' · ');let p=products.find(x=>x.id===(moodAnswers[0]==='Cosy & calm'?'bloom':moodAnswers[0]==='Bright & cheerful'?'affirm':moodAnswers[0]==='Creative & playful'?'stationery':'giftcard'))||products[0];$('#gameArea').innerHTML=`<h3>Your gift mood is ✨</h3><div class="result"><strong>${moodAnswers[0]}</strong><br>${a}</div><div style="display:flex;gap:15px;align-items:center;flex-wrap:wrap"><div class="product-art" style="width:115px;height:115px;background:${p.bg};font-size:48px">${p.emoji}</div><div><h4 style="margin:0 0 6px">We think you'll love ${p.name}</h4><p class="muted">${p.desc}</p><strong>${fmt(p.price)}</strong><br><button class="btn primary" style="margin-top:10px" data-add="${p.id}">Add to gift box</button></div></div><button class="btn secondary" style="margin-top:15px" data-game="mood">Take the quiz again</button>`}
-const affirmations=['You deserve the same kindness you give to others.','Small steps still move you forward.','You are allowed to begin again.','There is joy in the little things.','You do not have to bloom all at once.','Your presence is a lovely gift.'];function drawAffirmation(){const a=affirmations[Math.floor(Math.random()*affirmations.length)];$('#gameArea').innerHTML=`<h3>A Little Affirmation</h3><p class="muted">A tiny reminder, just for you.</p><div class="affirmation">“${a}”</div><button class="btn primary" data-game="affirmation">Pick another note ✨</button>`}
-function drawBudget(){ $('#gameArea').innerHTML=`<h3>Gift Budget Challenge</h3><p class="muted">Set your budget in Sri Lankan rupees and find a thoughtful mix that fits.</p><div class="budget-row"><label for="budgetAmount">My budget (LKR)</label><input id="budgetAmount" type="number" min="500" step="250" value="4000"><button class="btn primary" id="findBudget">Find my gift mix</button></div><div id="budgetResult"></div>`}
-function budgetMix(){const budget=Math.max(0,Number($('#budgetAmount').value)||0);const sorted=[...products].sort((a,b)=>b.price-a.price);let remain=budget,chosen=[];for(const p of sorted){if(p.price<=remain&&chosen.length<3){chosen.push(p);remain-=p.price}}const total=chosen.reduce((s,p)=>s+p.price,0);$('#budgetResult').innerHTML=chosen.length?`<div class="result"><strong>Your little gift mix</strong><br>${chosen.map(p=>p.emoji+' '+p.name+' — '+fmt(p.price)).join('<br>')}<hr><strong>Total: ${fmt(total)}</strong><br>Left over: ${fmt(budget-total)}</div><button class="btn primary" id="addBudgetMix">Add this mix to my gift box</button>`:'<div class="result">Try a slightly bigger budget to unlock a little mix.</div>';$('#budgetResult').dataset.ids=chosen.map(p=>p.id).join(',')}
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.page)go(b.dataset.page);if(b.dataset.go)go(b.dataset.go);if(b.dataset.add){cart[b.dataset.add]=(cart[b.dataset.add]||0)+1;renderProducts();toast('Added to your gift box ♡')}if(b.dataset.plus){cart[b.dataset.plus]=(cart[b.dataset.plus]||0)+1;updateCart()}if(b.dataset.minus){cart[b.dataset.minus]=Math.max(0,(cart[b.dataset.minus]||0)-1);updateCart()}if(b.dataset.game)launchGame(b.dataset.game);if(b.dataset.hunt!==undefined){if(b.classList.contains('found'))return;const v=b.dataset.wanted;if(v){b.textContent=v;b.classList.add('found');huntFound.add(b.dataset.hunt);$('#huntCount').textContent=huntFound.size+' / 5 found';if(huntFound.size===5)$('#huntMessage').textContent='You found every treasure! You are a little legend. ✨'}else{b.textContent=['☁','🍃','✦'][Math.floor(Math.random()*3)];b.disabled=true}}if(b.dataset.memory!==undefined){const i=Number(b.dataset.memory);if(memoryOpen.includes(i)||memoryMatched.has(i)||memoryOpen.length===2)return;b.textContent=memoryCards[i];b.classList.add('open');memoryOpen.push(i);if(memoryOpen.length===2){memoryMoves++;$('#moves').textContent=memoryMoves;const [a,c]=memoryOpen;if(memoryCards[a]===memoryCards[c]){memoryMatched.add(a);memoryMatched.add(c);$('#matched').textContent=(memoryMatched.size/2)+' / 6';memoryOpen=[];if(memoryMatched.size===12)$('#memoryMessage').textContent='All pairs matched in '+memoryMoves+' moves — lovely work! 🎉'}else{setTimeout(()=>{[a,c].forEach(n=>{const el=document.querySelector(`[data-memory="${n}"]`);if(el&&!memoryMatched.has(n)){el.textContent='?';el.classList.remove('open')}});memoryOpen=[]},650)}}}if(b.dataset.mood){moodAnswers.push(b.dataset.mood);moodStep++;if(moodStep<3)showMoodStep();else showMoodResult()}if(b.id==='findBudget')budgetMix();if(b.id==='addBudgetMix'){($('#budgetResult').dataset.ids||'').split(',').filter(Boolean).forEach(id=>cart[id]=(cart[id]||0)+1);renderProducts();toast('Your gift mix is in the box ♡');go('builder')}if(b.id==='resetBox'){Object.keys(cart).forEach(k=>delete cart[k]);$('#giftMessage').value='';$('#recipient').value='';$('#orderNotice').classList.add('hide');renderProducts();toast('Your gift box is ready to start again')}if(b.id==='orderBtn'){const chosen=products.filter(p=>cart[p.id]);if(!chosen.length){$('#orderNotice').textContent='Add at least one item to your gift box first.';$('#orderNotice').classList.remove('hide');return}const subtotal=chosen.reduce((s,p)=>s+p.price*cart[p.id],0)+450;const lines=['Hello! I would like to enquire about a custom gift box from The Wild Co.','',...chosen.map(p=>`${p.name} x ${cart[p.id]} — ${fmt(p.price*cart[p.id])}`),'Packaging — '+fmt(450),'Estimated total — '+fmt(subtotal),'Recipient: '+($('#recipient').value||'Not specified'),'Message: '+($('#giftMessage').value||'No message added'),'','I understand these are sample prices from a concept prototype. Please confirm actual products, prices and availability.'].join('\n');$('#orderNotice').innerHTML='Your order summary is ready. This prototype does not send orders automatically. <button class="btn primary" id="copyOrder" style="margin-top:8px">Copy order summary</button><textarea id="orderText" rows="7" style="width:100%;margin-top:8px;border:1px solid #dce3d8;border-radius:8px;padding:8px">'+lines.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</textarea><p class="muted" style="font-size:11px">Add the shop’s approved WhatsApp number before using a live order link.</p>';$('#orderNotice').classList.remove('hide')}if(b.id==='copyOrder'){const t=$('#orderText');t.select();try{document.execCommand('copy');toast('Order summary copied')}catch(err){toast('Select and copy the summary below')}}});
-renderProducts();renderGames('#homeGames');renderGames('#allGames');
-</script>
-</body></html>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="announcement" id="announcement-bar">Little things, thoughtful gifts, lots of joy ✿</div>
+  <div class="promotion-banner" id="promotion-banner" hidden></div>
+  <p class="storefront-feedback" id="storefront-feedback" role="status" hidden></p>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="The Wild Co. home">
+      <img class="brand-logo" src="assets/the-wild-co-logo.png" alt="The Wild Co. logo">
+      <span class="brand-name">The Wild Co.<small>little gifts, big feelings</small></span>
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <a href="#shop">Shop</a><a href="#gift-lab">Build a gift</a><a href="#play">Play corner</a><a href="#story">Our little world</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cart-pill" href="#gift-lab" aria-label="Gift box selection, 0 items">Gift <span id="cart-count">0</span></a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">A happy little corner of the world</span>
+          <h1 id="hero-title">A little joy,<br><span>wrapped just for you.</span></h1>
+          <p id="hero-description">Discover thoughtful little gifts, meet your new stationery sidekicks, and make someone's day extra special.</p>
+          <div class="hero-ctas">
+            <a class="button" href="#gift-lab">Build your gift box <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#shop">Explore the shop</a>
+          </div>
+          <div class="hero-note"><span aria-hidden="true">✦</span> Little things, made to make you smile.</div>
+        </div>
+        <div class="hero-art" aria-label="Illustrated gift box with friendly fruit and candle characters">
+          <span class="sparkle one" aria-hidden="true">✦</span><span class="sparkle two" aria-hidden="true">✧</span><span class="sparkle three" aria-hidden="true">✿</span>
+          <svg class="gift-scene" viewBox="0 0 560 440" role="img" aria-labelledby="gift-scene-title">
+            <title id="gift-scene-title">A mint gift box with happy strawberry, lemon, and candle friends</title>
+            <ellipse cx="282" cy="382" rx="190" ry="25" fill="#c6dfd1"/>
+            <path d="M119 185h321l-21 183H140z" fill="#f3a9a0"/>
+            <path d="M119 185h321l-21 49H137z" fill="#e99188"/>
+            <path d="M271 186h42v182h-42z" fill="#f7df8a"/>
+            <path d="M277 188c-82-9-112-76-63-78 35-1 48 48 64 77m-1 1c8-73 63-112 74-77 9 30-42 61-74 78" fill="none" stroke="#f6db8c" stroke-width="19" stroke-linecap="round"/>
+            <rect x="177" y="126" width="216" height="74" rx="16" fill="#b9e5d5" transform="rotate(-4 285 163)"/>
+            <path d="M210 130c-4-39 9-75 34-77 24-2 34 31 30 70" fill="#e96d61" stroke="#c8584e" stroke-width="5"/>
+            <path d="M238 58c-12-24-36-17-24-2 10 12 23 10 31 8m2-8c11-22 34-17 22-2-9 11-21 10-29 8" fill="#6c9d6d" stroke="#527c55" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="227" cy="99" r="3" fill="#ffefc2"/><circle cx="248" cy="92" r="3" fill="#ffefc2"/><circle cx="232" cy="116" r="3" fill="#ffefc2"/>
+            <circle cx="231" cy="111" r="3" fill="#46332e"/><circle cx="249" cy="109" r="3" fill="#46332e"/>
+            <path d="M234 120q7 8 14-1" fill="none" stroke="#46332e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M324 73h48v105h-48z" fill="#d9c8ed" rx="12"/><rect x="319" y="90" width="58" height="12" rx="6" fill="#c5b0de"/>
+            <path d="M342 69c-7-15 2-23 7-30 6 10 12 17 6 30" fill="#f6c86f"/>
+            <circle cx="339" cy="122" r="3" fill="#46332e"/><circle cx="357" cy="122" r="3" fill="#46332e"/><path d="M342 130q7 8 13 0" fill="none" stroke="#46332e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M174 160c-18-1-28-14-19-24 8-8 19 2 22 12 5-11 19-17 24-7 5 10-9 18-27 19" fill="#f6df83"/>
+            <circle cx="169" cy="150" r="2" fill="#46332e"/><circle cx="180" cy="149" r="2" fill="#46332e"/>
+            <path d="M172 155q4 4 8 0" fill="none" stroke="#46332e" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M409 117l6 10 11 2-8 8 2 11-11-5-10 5 2-11-8-8 11-2z" fill="#f6cecf"/>
+          </svg>
+          <span class="character-label">Your new tiny friends ♡</span>
+        </div>
+      </div>
+    </section>
+    <div id="custom-homepage-sections"></div>
+
+    <section class="instagram-proof" aria-label="The Wild Co. Instagram profile snapshot">
+      <div class="instagram-proof-inner">
+        <a class="instagram-profile" href="https://www.instagram.com/thewildcoshop/" target="_blank" rel="noopener noreferrer" aria-label="Visit The Wild Co. Instagram profile, @thewildcoshop">
+          <img class="brand-logo" src="assets/the-wild-co-logo.png" alt="">
+          <span><span class="instagram-handle" id="instagram-handle">@thewildcoshop</span><span class="instagram-caption">A little look at our Instagram</span></span>
+        </a>
+        <div class="instagram-stats" aria-label="Figures from the supplied Instagram screenshot, captured 28 October 2026">
+          <span class="instagram-stat"><strong id="instagram-posts">54</strong> posts</span>
+          <span class="instagram-stat"><strong id="instagram-followers">326</strong> followers</span>
+          <span class="instagram-stat"><strong id="instagram-stats-handle">@thewildcoshop</strong> Instagram</span>
+        </div>
+        <a class="button" href="https://www.instagram.com/thewildcoshop/" target="_blank" rel="noopener noreferrer">Visit Instagram <span aria-hidden="true">↗</span></a>
+        <span class="instagram-caption" id="instagram-snapshot-label">Profile figures captured from the supplied screenshot on 28 Oct 2026; not live or automatically updated.</span>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="category-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div><span class="eyebrow">Find your little something</span><h2 id="category-title">Shop by happy place</h2></div>
+          <a class="text-link" href="#shop">See everything →</a>
+        </div>
+        <div class="category-grid">
+          <a class="category-card" href="#shop" data-category-link="Candles"><strong>Candles</strong><span class="mini-art" data-art="candle"></span></a>
+          <a class="category-card" href="#shop" data-category-link="Stationery"><strong>Stationery</strong><span class="mini-art" data-art="plant"></span></a>
+          <a class="category-card" href="#shop" data-category-link="Affirmation cards"><strong>Affirmation cards</strong><span class="mini-art" data-art="strawberry"></span></a>
+          <a class="category-card" href="#gift-lab"><strong>Gift boxes</strong><span class="mini-art" data-art="gift"></span></a>
+          <a class="category-card" href="#shop" data-category-link="Little extras"><strong>Little extras</strong><span class="mini-art" data-art="lemon"></span></a>
+          <a class="category-card" href="#shop" data-category-link="All"><strong>New arrivals</strong><span class="mini-art" data-art="bubble"></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shop-section" id="shop" aria-labelledby="shop-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div><span class="eyebrow">Meet the little things</span><h2 id="shop-title">Made to make you smile</h2><p>Meet the candles, cards and cheerful characters currently in our little demo shop.</p></div>
+        </div>
+        <div class="shop-tools">
+          <div class="filter-list" role="group" aria-label="Filter products by category">
+            <button class="filter-button" type="button" data-filter="All" aria-pressed="true">Everything</button>
+            <button class="filter-button" type="button" data-filter="Candles" aria-pressed="false">Candles</button>
+            <button class="filter-button" type="button" data-filter="Stationery" aria-pressed="false">Stationery</button>
+            <button class="filter-button" type="button" data-filter="Affirmation cards" aria-pressed="false">Cards</button>
+            <button class="filter-button" type="button" data-filter="Little extras" aria-pressed="false">Little extras</button>
+          </div>
+          <div class="search-sort">
+            <label class="sr-only" for="product-search">Search products</label>
+            <input class="field" id="product-search" type="search" placeholder="Find a little something">
+            <label class="sr-only" for="product-sort">Sort products</label>
+            <select class="select-field" id="product-sort"><option value="featured">Sort: featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select>
+          </div>
+        </div>
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section gift-banner" aria-labelledby="gift-promo-title">
+      <div class="section-inner gift-banner-inner">
+        <div class="gift-banner-copy">
+          <span class="eyebrow">The Gift Lab</span>
+          <h2 id="gift-promo-title">Make it personal.<br>Make it yours.</h2>
+          <p>Pick a box, choose a few favourites and add a little note straight from your heart.</p>
+          <a class="button coral" href="#gift-lab">Create a custom gift <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="gift-banner-art" aria-hidden="true"><svg viewBox="0 0 320 210"><path d="M40 89h240l-15 105H55z" fill="#b7e5d4"/><path d="M40 89h240v29H40z" fill="#8fceb4"/><path d="M145 90h33v103h-33z" fill="#e99188"/><path d="M160 90c-72-9-80-48-49-49 23-1 39 30 49 48m0 1c8-54 52-67 58-43 5 20-30 34-58 43" fill="none" stroke="#f7df8a" stroke-width="13" stroke-linecap="round"/><circle cx="92" cy="74" r="24" fill="#f8b8b2"/><path d="M83 47c-6-15-22-12-13-1 6 7 15 7 20 5m1-4c7-13 22-10 14 0-5 7-13 6-19 4" fill="#6c9d6d"/><circle cx="86" cy="73" r="2" fill="#342d2a"/><circle cx="98" cy="73" r="2" fill="#342d2a"/><path d="M87 80q5 5 10 0" fill="none" stroke="#342d2a" stroke-width="2" stroke-linecap="round"/><path d="M221 58h30v54h-30z" fill="#d8c8ed"/><path d="M232 54c-5-11 1-15 5-23 5 9 9 13 4 23" fill="#f7c96d"/><circle cx="231" cy="78" r="2" fill="#342d2a"/><circle cx="242" cy="78" r="2" fill="#342d2a"/><path d="M233 84q4 4 8 0" fill="none" stroke="#342d2a" stroke-width="2" stroke-linecap="round"/></svg></div>
+      </div>
+    </section>
+
+    <section class="section gift-section" id="gift-lab" aria-labelledby="builder-title">
+      <div class="section-inner">
+        <span class="eyebrow">A gift with your name on it</span>
+        <h2 id="builder-title">Build your own little box</h2>
+        <p class="section-intro">Choose the feel, add a few favourites, and leave a note. We'll help you put the lovely bits together.</p>
+        <div class="builder-grid">
+          <div class="builder-panel">
+            <div class="builder-step">
+              <div class="step-heading"><span class="step-number">1</span><h3>Pick your box mood</h3></div>
+              <p class="summary-note">Box moods are personalisation only; final box size and any related price are confirmed by the shop.</p>
+              <div class="box-choice-row" role="group" aria-label="Choose a gift box size">
+                <button class="box-choice" type="button" data-box="Little treat" aria-pressed="true"><strong>Little treat</strong><span>A sweet little something</span></button>
+                <button class="box-choice" type="button" data-box="Thoughtful box" aria-pressed="false"><strong>Thoughtful box</strong><span>A few favourite things</span></button>
+                <button class="box-choice" type="button" data-box="Big surprise" aria-pressed="false"><strong>Big surprise</strong><span>Room for extra joy</span></button>
+              </div>
+              <label class="packaging-select">Optional packaging style
+                <select class="select-field" id="packaging-select"><option value="">No extra packaging selected</option></select>
+              </label>
+            </div>
+            <div class="builder-step">
+              <div class="step-heading"><span class="step-number">2</span><h3>Add the happy things</h3></div>
+              <div class="builder-products" id="builder-products"></div>
+            </div>
+            <div class="builder-step">
+              <div class="step-heading"><span class="step-number">3</span><h3>Add your personal touch</h3></div>
+              <div class="personal-fields">
+                <label>Recipient's name<input class="field" id="recipient" maxlength="70" autocomplete="name" placeholder="Who is it for?"></label>
+                <label>Your name<input class="field" id="sender" maxlength="70" placeholder="From"></label>
+                <label>Your contact number<input class="field" id="customer-phone" type="tel" inputmode="tel" maxlength="32" autocomplete="tel" placeholder="Include country code"></label>
+                <label class="wide">Delivery address<textarea class="textarea-field" id="delivery-address" maxlength="1000" rows="2" autocomplete="street-address" placeholder="Where should this gift go?"></textarea></label>
+                <label class="wide">Delivery area
+                  <select class="select-field" id="delivery-zone-select"><option value="">Delivery fee to be confirmed</option></select>
+                  <span class="summary-note" id="delivery-information">Delivery options and fees are confirmed by the shop before an order is final.</span>
+                </label>
+                <label class="wide">Coupon code (optional)<input class="field" id="coupon-code" maxlength="40" autocomplete="off" placeholder="Enter a shop coupon"></label>
+                <label class="wide">Your little note<textarea class="textarea-field" id="gift-message" maxlength="400" rows="3" placeholder="Write something lovely…"></textarea></label>
+                <label class="wide">Occasion <select class="select-field" id="occasion"><option value="">Just because</option><option>Birthday</option><option>Thank you</option><option>Anniversary</option><option>Celebration</option></select></label>
+              </div>
+            </div>
+          </div>
+          <aside class="summary-panel" aria-labelledby="summary-title">
+            <div class="preview-scene" aria-hidden="true"><svg viewBox="0 0 180 140"><path d="M23 51h134l-9 77H32z" fill="#efaaa1"/><path d="M23 51h134v21H23z" fill="#e99188"/><path d="M80 52h20v76H80z" fill="#f7df8a"/><path d="M90 52c-35-5-39-29-24-30 12 0 20 18 24 29m0 1c4-32 25-41 29-26 3 12-15 21-29 27" fill="none" stroke="#f6db8c" stroke-width="8" stroke-linecap="round"/><circle cx="57" cy="86" r="16" fill="#f8b8b2"/><path d="M51 70c-4-9-13-7-8-1 4 4 9 4 12 3m0-2c4-8 13-6 8 0-3 4-8 4-11 3" fill="#6c9d6d"/><circle cx="53" cy="85" r="1.6" fill="#342d2a"/><circle cx="61" cy="85" r="1.6" fill="#342d2a"/><path d="M54 90q3 3 6 0" fill="none" stroke="#342d2a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <h3 id="summary-title">Your little gift</h3>
+            <div class="summary-line"><span>Box style</span><strong id="summary-box">Little treat</strong></div>
+            <div class="summary-items" id="summary-items"><p class="summary-note">Your gift is waiting for its first little thing.</p></div>
+            <div class="summary-line total"><span>Items estimate</span><strong id="summary-total">LKR 0</strong></div>
+            <p class="summary-note">The saved estimate includes selected items and available packaging and delivery fees. Coupon eligibility and any discount are validated by the shop server when you save the enquiry.</p>
+            <button class="button" id="whatsapp-order" type="button">Order your gift on WhatsApp <span aria-hidden="true">↗</span></button>
+            <p class="form-feedback" id="order-feedback" role="status" aria-live="polite"></p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section play-section" id="play" aria-labelledby="play-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div><span class="eyebrow">Take a tiny play break</span><h2 id="play-title">The little play corner</h2><p>Five small ways to add a little extra happy to your day.</p></div>
+        </div>
+        <div class="game-grid">
+          <article class="game-card" data-game-key="little_hunt">
+            <div class="game-title"><span class="game-icon" aria-hidden="true">🔎</span><h3>The Wild Little Hunt</h3></div>
+            <p class="game-description">Five tiny friends are hiding in plain sight. Tap each one to find it!</p>
+            <div class="hunt-board" id="hunt-board" aria-label="Find all five characters"></div>
+            <p class="game-status" id="hunt-status" role="status" aria-live="polite">0 of 5 found</p>
+            <button class="button secondary" id="hunt-reset" type="button">Play again</button>
+          </article>
+
+          <article class="game-card" data-game-key="memory_match">
+            <div class="game-title"><span class="game-icon" aria-hidden="true">🧠</span><h3>The Little Match Game</h3></div>
+            <p class="game-description">Find the matching pairs. How many flips will it take?</p>
+            <div class="memory-board" id="memory-board" aria-label="Memory matching game"></div>
+            <p class="game-status" id="memory-status" role="status" aria-live="polite">Moves: 0 · Pairs: 0/4</p>
+            <button class="button secondary" id="memory-reset" type="button">Shuffle & restart</button>
+          </article>
+
+          <article class="game-card" data-game-key="gift_mood">
+            <div class="game-title"><span class="game-icon" aria-hidden="true">💭</span><h3>What's Your Gift Mood?</h3></div>
+            <p class="game-description">Pick the feeling you want to send and we'll find a little match.</p>
+            <div class="mood-options" role="group" aria-label="Choose a gift mood">
+              <button class="filter-button mood-choice" type="button" data-mood="Cosy and Calm">Cosy & calm</button>
+              <button class="filter-button mood-choice" type="button" data-mood="Bright and Playful">Bright & playful</button>
+              <button class="filter-button mood-choice" type="button" data-mood="Thoughtful and Meaningful">Thoughtful & meaningful</button>
+              <button class="filter-button mood-choice" type="button" data-mood="Creative and Colourful">Creative & colourful</button>
+            </div>
+            <p class="game-status" id="mood-status" role="status" aria-live="polite">Choose a mood to meet a little favourite.</p>
+            <button class="button secondary" id="mood-reset" type="button">Choose again</button>
+          </article>
+
+          <article class="game-card" data-game-key="affirmation">
+            <div class="game-title"><span class="game-icon" aria-hidden="true">🌼</span><h3>A Little Affirmation</h3></div>
+            <p class="game-description">A tiny reminder, whenever you need one.</p>
+            <div class="affirmation-box" id="affirmation-box" aria-live="polite">Your reminder is just a button away ♡</div>
+            <div class="game-controls" style="margin-top:11px">
+              <button class="button" id="affirmation-button" type="button">Give me a little reminder</button>
+              <button class="button secondary" id="copy-affirmation" type="button">Copy</button>
+            </div>
+            <p class="game-status" id="affirmation-status" role="status" aria-live="polite"></p>
+          </article>
+
+          <article class="game-card wide" data-game-key="budget_challenge">
+            <div class="game-title"><span class="game-icon" aria-hidden="true">🪙</span><h3>The Gift Budget Challenge</h3></div>
+            <p class="game-description">Tell us your budget and we'll find an available little combination that fits. Product items only — gift-box and delivery charges are not included.</p>
+            <p class="tiny-label">Your budget (LKR)</p>
+            <div class="game-controls">
+              <label class="sr-only" for="budget-input">Budget in LKR</label>
+              <input class="field" id="budget-input" type="number" inputmode="numeric" min="1" step="100" placeholder="e.g. 3000">
+              <button class="button" id="budget-button" type="button">Find my happy combo</button>
+              <button class="button secondary" id="budget-again" type="button">Another idea</button>
+            </div>
+            <div class="budget-result" id="budget-result" role="status" aria-live="polite" hidden></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reassurance" id="story" aria-labelledby="story-title">
+      <div class="section-inner">
+        <div class="section-heading"><div><span class="eyebrow">A note from our little world</span><h2 id="story-title">The thoughtful bits matter</h2><p>Questions about a gift or want to check what's available? Say hello and we'll help you find the right details.</p></div></div>
+        <div class="reassurance-grid">
+          <article class="reassurance-card"><span aria-hidden="true">🎁</span><h3>A little personal</h3><p>Add a note in the Gift Lab and let us know how you'd like your gift to feel.</p></article>
+          <article class="reassurance-card"><span aria-hidden="true">🌱</span><h3>Made with care</h3><p>Our cheerful characters and playful little details are inspired by the products in our reference.</p></article>
+          <article class="reassurance-card"><span aria-hidden="true">💌</span><h3>Let's work it out</h3><p>Stock, packaging, delivery and final pricing need to be confirmed with the shop before an order is complete.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="#home" aria-label="The Wild Co. home">
+          <img class="brand-logo" src="assets/the-wild-co-logo.png" alt="The Wild Co. logo">
+          <span class="brand-name">The Wild Co.<small>little gifts, big feelings</small></span>
+        </a>
+        <p>Thoughtful little gifts, happy stationery and things made to bring a smile.</p>
+      </div>
+      <nav class="footer-links" aria-label="Shop links"><strong>Explore</strong><a href="#shop">Shop all</a><a href="#gift-lab">Build a gift</a><a href="#play">Play corner</a></nav>
+      <div class="footer-links"><strong>Say hello</strong><a id="footer-whatsapp" href="#gift-lab">WhatsApp ordering is not configured yet.</a><a href="https://www.instagram.com/thewildcoshop/" target="_blank" rel="noopener noreferrer">@thewildcoshop on Instagram ↗</a><span id="footer-delivery-information">Delivery options and fees are confirmed by the shop before an order is final.</span></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> The Wild Co. · Demo prices and illustrations for preview.</span><a href="#story">Policies and contact details need to be supplied by the shop.</a></div>
+  </footer>
+
+  <nav class="mobile-nav" aria-label="Quick navigation">
+    <a href="#home"><span aria-hidden="true">⌂</span>Home</a>
+    <a href="#shop"><span aria-hidden="true">♡</span>Shop</a>
+    <a href="#gift-lab"><span aria-hidden="true">🎁</span>Gift</a>
+    <a href="#play"><span aria-hidden="true">✿</span>Play</a>
+  </nav>
+
+  <style>
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <script>
+    "use strict";
+    let WHATSAPP_NUMBER = "";
+    let storeOpen = true;
+    let selectedPackaging = null;
+    let deliveryZones = [];
+    let selectedDeliveryZone = null;
+    let activeGameSettings = {};
+    let packagingOptions = [];
+    let products = [
+      { id: "bloom", name: "Bloom Candle", category: "Candles", price: 3500, art: "candle", description: "A little glow for a cosy corner." },
+      { id: "lagoon", name: "Lagoon Candle", category: "Candles", price: 3200, art: "bluecandle", description: "A soft, happy pop of colour." },
+      { id: "bubble", name: "Bubble Candle", category: "Candles", price: 2800, art: "bubble", description: "A sculptural little mood-lifter." },
+      { id: "affirmations", name: "Affirmation Cards", category: "Affirmation cards", price: 900, art: "strawberry", description: "Pocket-sized reminders to be kind to you." },
+      { id: "stationery", name: "Stationery Bundle", category: "Stationery", price: 1500, art: "plant", description: "Paper things for the happy ideas." },
+      { id: "packaging", name: "Gift Packaging", category: "Little extras", price: 700, art: "gift", description: "A little extra finishing touch." },
+      { id: "card", name: "Greeting Card", category: "Little extras", price: 600, art: "lemon", description: "A few thoughtful words, all yours." }
+    ];
+    const artSvg = {
+      candle: `<svg viewBox="0 0 220 210" role="img" aria-label="Smiling flower-shaped candle illustration"><ellipse cx="110" cy="188" rx="66" ry="10" fill="#d6d0c1"/><path d="M101 68c-4-16-18-20-26-12-7 8-1 22 11 27-16-1-24 9-18 18 5 8 19 7 29-4-8 14-2 26 8 26 10 0 16-12 8-26 11 11 24 12 29 4 6-9-2-19-18-18 12-5 18-19 11-27-8-8-22-4-26 12Z" fill="#f6d978" stroke="#e0bf5d" stroke-width="3"/><rect x="75" y="101" width="70" height="79" rx="17" fill="#f4d577"/><path d="M110 100c-9-16 0-23 5-34 7 12 13 20 5 34" fill="#f09b74"/><circle cx="99" cy="141" r="3" fill="#493631"/><circle cx="121" cy="141" r="3" fill="#493631"/><path d="M101 150q9 10 18 0" fill="none" stroke="#493631" stroke-width="3" stroke-linecap="round"/><circle cx="91" cy="148" r="6" fill="#e9a29a" opacity=".8"/><circle cx="129" cy="148" r="6" fill="#e9a29a" opacity=".8"/></svg>`,
+      bluecandle: `<svg viewBox="0 0 220 210" role="img" aria-label="Smiling blue lagoon candle illustration"><ellipse cx="110" cy="185" rx="65" ry="10" fill="#d6d0c1"/><path d="M74 98h72l-7 79H81z" fill="#82c5d0"/><ellipse cx="110" cy="98" rx="36" ry="12" fill="#9ad4db"/><path d="M106 92c-8-15 0-22 5-31 6 11 12 19 5 31" fill="#f4b568"/><circle cx="98" cy="131" r="3" fill="#373634"/><circle cx="120" cy="131" r="3" fill="#373634"/><path d="M100 140q9 10 18 0" fill="none" stroke="#373634" stroke-width="3" stroke-linecap="round"/><path d="M91 154q19 11 38 0" fill="none" stroke="#d4f0e9" stroke-width="4" stroke-linecap="round"/><circle cx="89" cy="138" r="6" fill="#f4a8a0"/><circle cx="131" cy="138" r="6" fill="#f4a8a0"/></svg>`,
+      bubble: `<svg viewBox="0 0 220 210" role="img" aria-label="Smiling pastel bubble candle illustration"><ellipse cx="110" cy="183" rx="68" ry="10" fill="#d6d0c1"/><g fill="#c6a9dc" stroke="#b48fcf" stroke-width="2"><circle cx="82" cy="135" r="29"/><circle cx="110" cy="135" r="29"/><circle cx="138" cy="135" r="29"/><circle cx="82" cy="107" r="29"/><circle cx="110" cy="107" r="29"/><circle cx="138" cy="107" r="29"/><circle cx="110" cy="79" r="29"/></g><circle cx="101" cy="118" r="3" fill="#423731" stroke="none"/><circle cx="119" cy="118" r="3" fill="#423731" stroke="none"/><path d="M103 127q7 8 14 0" fill="none" stroke="#423731" stroke-width="2.5" stroke-linecap="round"/><circle cx="94" cy="126" r="5" fill="#e99c9a" stroke="none"/><circle cx="126" cy="126" r="5" fill="#e99c9a" stroke="none"/></svg>`,
+      strawberry: `<svg viewBox="0 0 220 210" role="img" aria-label="Smiling strawberry character illustration"><ellipse cx="110" cy="188" rx="58" ry="9" fill="#d6d0c1"/><path d="M110 66c-15-22-43-14-30 2 9 11 23 8 33 4m-2-5c13-23 41-15 29 1-9 11-22 9-32 5" fill="#7fa878" stroke="#648c5f" stroke-width="3"/><path d="M110 75c-29-2-53 20-48 54 4 29 27 53 48 62 22-10 46-33 49-62 4-34-20-56-49-54Z" fill="#ef8178" stroke="#dc6a62" stroke-width="4"/><g fill="#f8d58a"><ellipse cx="84" cy="104" rx="3" ry="5" transform="rotate(-25 84 104)"/><ellipse cx="108" cy="97" rx="3" ry="5"/><ellipse cx="132" cy="105" rx="3" ry="5" transform="rotate(25 132 105)"/><ellipse cx="76" cy="129" rx="3" ry="5" transform="rotate(-18 76 129)"/><ellipse cx="97" cy="123" rx="3" ry="5"/><ellipse cx="120" cy="124" rx="3" ry="5"/><ellipse cx="142" cy="130" rx="3" ry="5" transform="rotate(18 142 130)"/><ellipse cx="88" cy="149" rx="3" ry="5"/><ellipse cx="111" cy="146" rx="3" ry="5"/><ellipse cx="132" cy="151" rx="3" ry="5"/></g><circle cx="98" cy="132" r="3" fill="#423731"/><circle cx="122" cy="132" r="3" fill="#423731"/><path d="M101 141q9 10 18 0" fill="none" stroke="#423731" stroke-width="3" stroke-linecap="round"/><circle cx="88" cy="141" r="6" fill="#f8b3a5"/><circle cx="132" cy="141" r="6" fill="#f8b3a5"/></svg>`,
+      lemon: `<svg viewBox="0 0 220 210" role="img" aria-label="Smiling lemon character illustration"><ellipse cx="110" cy="180" rx="64" ry="10" fill="#d6d0c1"/><path d="M67 126c0-30 18-51 43-51s43 21 43 51c18 5 22 26 4 36-25 16-69 16-94 0-18-10-14-31 4-36Z" fill="#f5d875" stroke="#e5c25e" stroke-width="4"/><path d="M105 77c-6-20 7-24 18-14-7 3-10 8-9 16" fill="#7fa878" stroke="#648c5f" stroke-width="3"/><circle cx="97" cy="126" r="3" fill="#423731"/><circle cx="123" cy="126" r="3" fill="#423731"/><path d="M100 136q10 10 20 0" fill="none" stroke="#423731" stroke-width="3" stroke-linecap="round"/><circle cx="87" cy="136" r="6" fill="#f4a29a"/><circle cx="133" cy="136" r="6" fill="#f4a29a"/></svg>`,
+      plant: `<svg viewBox="0 0 220 210" role="img" aria-label="Happy potted plant character illustration"><ellipse cx="110" cy="183" rx="62" ry="9" fill="#d6d0c1"/><path d="M76 132h68l-8 46H84z" fill="#d99c81"/><path d="M80 140q30 10 60 0" fill="none" stroke="#bc8068" stroke-width="3"/><path d="M110 132V78" stroke="#648c5f" stroke-width="5" stroke-linecap="round"/><path d="M108 103C63 97 64 65 88 65c17 0 22 18 22 37m2-10c6-40 38-42 40-20 2 15-17 22-39 27m-5-1c-31-31-56-13-42 4 10 11 27 3 43-4" fill="#a9cf9c" stroke="#7ea875" stroke-width="3"/><circle cx="101" cy="151" r="3" fill="#423731"/><circle cx="119" cy="151" r="3" fill="#423731"/><path d="M103 160q7 7 14 0" fill="none" stroke="#423731" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+      gift: `<svg viewBox="0 0 220 210" role="img" aria-label="Smiling gift box illustration"><ellipse cx="110" cy="184" rx="68" ry="10" fill="#d6d0c1"/><path d="M48 91h124v82H48z" fill="#f3aaa0"/><path d="M48 91h124v20H48z" fill="#e99087"/><path d="M101 92h20v81h-20z" fill="#f7df8a"/><path d="M110 92c-46-5-49-31-28-31 15 0 25 19 28 30m1 1c5-34 33-42 37-26 3 13-20 22-37 27" fill="none" stroke="#f5d57e" stroke-width="10" stroke-linecap="round"/><circle cx="95" cy="134" r="3" fill="#423731"/><circle cx="126" cy="134" r="3" fill="#423731"/><path d="M99 145q11 11 22 0" fill="none" stroke="#423731" stroke-width="3" stroke-linecap="round"/><circle cx="82" cy="143" r="6" fill="#f6c2b9"/><circle cx="139" cy="143" r="6" fill="#f6c2b9"/></svg>`
+    };
+
+    const money = value => `LKR ${new Intl.NumberFormat("en-LK").format(value)}`;
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+    let activeFilter = "All";
+    let selectedBox = "Little treat";
+    let selectedVariantIds = {};
+
+    document.querySelectorAll("[data-art]").forEach(node => { node.innerHTML = artSvg[node.dataset.art] || ""; });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function renderProducts() {
+      const search = document.getElementById("product-search").value.trim().toLowerCase();
+      const sort = document.getElementById("product-sort").value;
+      let shown = products.filter(product => (activeFilter === "All" || product.category === activeFilter) && `${product.name} ${product.category}`.toLowerCase().includes(search));
+      if (sort === "low") shown = shown.slice().sort((a, b) => a.price - b.price);
+      if (sort === "high") shown = shown.slice().sort((a, b) => b.price - a.price);
+      if (sort === "featured") shown = shown.slice().sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || Number(Boolean(b.bestseller)) - Number(Boolean(a.bestseller)) || Number(Boolean(b.isNew)) - Number(Boolean(a.isNew)));
+      const grid = document.getElementById("product-grid");
+      if (!shown.length) {
+        grid.innerHTML = `<p class="empty-message">No little things found. Try another search or clear the category filter.</p>`;
+        return;
+      }
+      grid.innerHTML = shown.map(product => {
+        const selectedVariant = selectedVariantFor(product);
+        const currentPrice = selectedVariant ? product.price + selectedVariant.price_delta_lkr : product.price;
+        const variants = Array.isArray(product.variants) ? product.variants : [];
+        return `<article class="product-card">
+        <div class="product-art">${product.imageUrl ? `<img src="${escapeHtml(product.imageUrl)}" alt="${escapeHtml(product.imageAlt || product.name)}" loading="lazy">` : artSvg[product.art] || artSvg.gift}</div>
+        <div class="product-info"><h3>${escapeHtml(product.name)}</h3><p class="product-description">${escapeHtml(product.description)}</p>
+          ${variants.length ? `<label class="variant-choice">Choose an option<select class="select-field variant-select" data-product="${escapeHtml(product.id)}">${variants.map(variant => `<option value="${escapeHtml(variant.id)}"${selectedVariant?.id === variant.id ? " selected" : ""}>${escapeHtml(variant.name)} · ${money(product.price + variant.price_delta_lkr)}</option>`).join("")}</select></label>` : ""}
+          <div class="product-meta"><span class="product-price">${product.originalPrice ? `<s>${money(product.originalPrice + (selectedVariant?.price_delta_lkr || 0))}</s> ` : ""}${money(currentPrice)}</span><span class="stock-label">${product.isRemote ? product.available ? "Available to enquire" : "Currently unavailable" : "Demo item · availability to confirm"}</span></div>
+          <div class="product-actions"><button class="button secondary add-to-box" type="button" data-product="${escapeHtml(product.id)}"${product.available === false || !storeOpen ? " disabled" : ""}>${product.available === false ? "Out of stock" : "Add to gift box"}</button></div>
+        </div>
+      </article>`;
+      }).join("");
+    }
+    function installCategoryActions() {
+      document.querySelectorAll("[data-filter]").forEach(button => button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        document.querySelectorAll("[data-filter]").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+        renderProducts();
+      }));
+      document.querySelectorAll("[data-category-link]").forEach(link => link.addEventListener("click", () => {
+        activeFilter = link.dataset.categoryLink;
+        document.querySelectorAll("[data-filter]").forEach(item => item.setAttribute("aria-pressed", String(item.dataset.filter === activeFilter)));
+        renderProducts();
+      }));
+    }
+    installCategoryActions();
+    document.getElementById("product-search").addEventListener("input", renderProducts);
+    document.getElementById("product-sort").addEventListener("change", renderProducts);
+
+    const builderProducts = document.getElementById("builder-products");
+    function selectedVariantFor(product) {
+      const variants = Array.isArray(product.variants) ? product.variants : [];
+      const selectedId = selectedVariantIds[product.id];
+      return variants.find(variant => variant.id === selectedId) || variants[0] || null;
+    }
+    function renderBuilderProducts() {
+      const selected = new Set([...builderProducts.querySelectorAll("input:checked")].map(input => input.value));
+      builderProducts.innerHTML = products.map(product => {
+        const variant = selectedVariantFor(product);
+        const variants = Array.isArray(product.variants) ? product.variants : [];
+        return `<div class="builder-product"><input id="pick-${escapeHtml(product.id)}" type="checkbox" value="${escapeHtml(product.id)}"${selected.has(product.id) ? " checked" : ""}${product.available === false || !storeOpen ? " disabled" : ""}><label for="pick-${escapeHtml(product.id)}">${escapeHtml(product.name)}<span>${money(product.price + (variant?.price_delta_lkr || 0))}</span></label>${variants.length ? `<select class="select-field variant-select" data-product="${escapeHtml(product.id)}" aria-label="Choose ${escapeHtml(product.name)} option">${variants.map(item => `<option value="${escapeHtml(item.id)}"${variant?.id === item.id ? " selected" : ""}>${escapeHtml(item.name)} · ${money(product.price + item.price_delta_lkr)}</option>`).join("")}</select>` : ""}</div>`;
+      }).join("");
+    }
+    function renderPackagingOptions() {
+      const select = document.getElementById("packaging-select");
+      const prior = selectedPackaging?.id || "";
+      select.innerHTML = `<option value="">No extra packaging selected</option>${packagingOptions.map(item => {
+        const limits = item.max_items === null ? ` · min ${item.min_items} items` : ` · ${item.min_items}–${item.max_items} items`;
+        return `<option value="${escapeHtml(item.id)}">${escapeHtml(item.name)} — ${money(item.price_lkr)}${item.min_items || item.max_items !== null ? limits : ""}</option>`;
+      }).join("")}`;
+      if (packagingOptions.some(item => item.id === prior)) select.value = prior;
+      selectedPackaging = packagingOptions.find(item => item.id === select.value) || null;
+    }
+    function renderDeliveryZones() {
+      const select = document.getElementById("delivery-zone-select");
+      const prior = selectedDeliveryZone?.id || "";
+      select.innerHTML = `<option value="">${deliveryZones.length ? "Choose a delivery area" : "Delivery fee to be confirmed"}</option>${deliveryZones.map(zone =>
+        `<option value="${escapeHtml(zone.id)}">${escapeHtml(zone.name)} — ${money(zone.fee_lkr)}${zone.estimated_delivery ? ` · ${escapeHtml(zone.estimated_delivery)}` : ""}</option>`
+      ).join("")}`;
+      if (deliveryZones.some(zone => zone.id === prior)) select.value = prior;
+      selectedDeliveryZone = deliveryZones.find(zone => zone.id === select.value) || null;
+    }
+    function renderCategoryControls(categories) {
+      const filterList = document.querySelector(".filter-list");
+      activeFilter = "All";
+      filterList.innerHTML = `<button class="filter-button" type="button" data-filter="All" aria-pressed="true">Everything</button>${categories.map(category => `<button class="filter-button" type="button" data-filter="${escapeHtml(category.name)}" aria-pressed="false">${escapeHtml(category.name)}</button>`).join("")}`;
+      const categoryGrid = document.querySelector(".category-grid");
+      categoryGrid.innerHTML = `${categories.slice(0, 5).map((category, index) => {
+        const art = ["candle", "plant", "strawberry", "lemon", "bubble"][index % 5];
+        const picture = category.imageUrl
+          ? `<img class="mini-art category-image" src="${escapeHtml(category.imageUrl)}" alt="" loading="lazy">`
+          : artSvg[art];
+        return `<a class="category-card" href="#shop" data-category-link="${escapeHtml(category.name)}"><strong>${escapeHtml(category.name)}</strong><span class="mini-art">${picture}</span></a>`;
+      }).join("")}<a class="category-card" href="#gift-lab"><strong>Gift boxes</strong><span class="mini-art">${artSvg.gift}</span></a>`;
+      installCategoryActions();
+    }
+    window.setWildStorefront = (data) => {
+      if (Array.isArray(data.products)) products = data.products;
+      products.forEach(product => {
+        const variants = Array.isArray(product.variants) ? product.variants : [];
+        if (!variants.some(variant => variant.id === selectedVariantIds[product.id])) selectedVariantIds[product.id] = variants[0]?.id || null;
+      });
+      if (Array.isArray(data.categories)) renderCategoryControls(data.categories);
+      if (Array.isArray(data.packagingOptions)) packagingOptions = data.packagingOptions;
+      if (Array.isArray(data.deliveryZones)) deliveryZones = data.deliveryZones;
+      renderBuilderProducts();
+      renderPackagingOptions();
+      renderDeliveryZones();
+      const settings = data.settings || {};
+      const promoBanner = document.getElementById("promotion-banner");
+      const bannerMessages = Array.isArray(settings.promotions)
+        ? settings.promotions.map(promotion => promotion && typeof promotion === "object" ? promotion.banner_text : "").filter(text => typeof text === "string" && text.trim())
+        : [];
+      promoBanner.textContent = bannerMessages.join(" · ");
+      promoBanner.hidden = bannerMessages.length === 0;
+      if (typeof settings.delivery_information === "string") {
+        document.getElementById("delivery-information").textContent = settings.delivery_information;
+      }
+      if (typeof settings.whatsapp_number === "string") {
+        WHATSAPP_NUMBER = settings.whatsapp_number;
+        const footerWhatsApp = document.getElementById("footer-whatsapp");
+        if (/^[1-9]\d{7,14}$/.test(WHATSAPP_NUMBER)) {
+          footerWhatsApp.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+          footerWhatsApp.target = "_blank";
+          footerWhatsApp.rel = "noopener noreferrer";
+          footerWhatsApp.textContent = "Message us on WhatsApp ↗";
+        }
+      }
+      if (typeof settings.store_open === "boolean") {
+        storeOpen = settings.store_open;
+        const orderButton = document.getElementById("whatsapp-order");
+        orderButton.disabled = !storeOpen;
+        if (!storeOpen) document.getElementById("order-feedback").textContent = "The shop is temporarily not taking order enquiries.";
+      }
+      if (typeof settings.announcement === "string") {
+        const announcement = document.getElementById("announcement-bar");
+        announcement.textContent = settings.announcement;
+        announcement.hidden = settings.announcement.trim() === "";
+      }
+      if (typeof settings.hero_title === "string") document.getElementById("hero-title").textContent = settings.hero_title;
+      if (typeof settings.hero_description === "string") document.getElementById("hero-description").textContent = settings.hero_description;
+      if (typeof settings.instagram_handle === "string") {
+        document.getElementById("instagram-handle").textContent = settings.instagram_handle;
+        document.getElementById("instagram-stats-handle").textContent = settings.instagram_handle;
+        document.querySelectorAll('a[href*="instagram.com/"]').forEach(link => { link.href = settings.instagram_url || `https://www.instagram.com/${settings.instagram_handle.replace(/^@/, "")}/`; });
+      }
+      activeGameSettings = Object.fromEntries((data.games || []).map(game => [game.game_key, game.settings || {}]));
+      applyBudgetSettings();
+      data.games?.forEach(game => {
+        const card = document.querySelector(`[data-game-key="${CSS.escape(game.game_key)}"]`);
+        if (!card) return;
+        const title = card.querySelector(".game-title h3");
+        const description = card.querySelector(".game-description");
+        if (title) title.textContent = game.title;
+        if (description) description.textContent = game.description;
+        card.hidden = !game.is_enabled;
+      });
+      document.querySelectorAll("[data-game-key]").forEach(card => {
+        if (!data.games?.some(game => game.game_key === card.dataset.gameKey)) card.hidden = true;
+      });
+      const deliveryInfo = typeof settings.delivery_information === "string" ? settings.delivery_information : "";
+      document.getElementById("footer-delivery-information").textContent = deliveryInfo;
+      document.getElementById("delivery-information").textContent = deliveryInfo;
+      const storyRoot = document.getElementById("custom-homepage-sections");
+      storyRoot.replaceChildren();
+      (data.homepageSections || []).forEach(section => {
+        const wrapper = document.createElement("section");
+        wrapper.className = "custom-story-section";
+        const card = document.createElement("article");
+        card.className = "custom-story-card";
+        const heading = document.createElement("h2");
+        heading.textContent = section.title;
+        const paragraph = document.createElement("p");
+        paragraph.textContent = typeof section.content?.body === "string" ? section.content.body : "";
+        card.append(heading, paragraph);
+        wrapper.append(card);
+        storyRoot.append(wrapper);
+      });
+      if (Number.isSafeInteger(settings.instagram_posts)) document.getElementById("instagram-posts").textContent = String(settings.instagram_posts);
+      if (Number.isSafeInteger(settings.instagram_followers)) document.getElementById("instagram-followers").textContent = String(settings.instagram_followers);
+      if (typeof settings.instagram_snapshot_date === "string") {
+        const date = new Date(`${settings.instagram_snapshot_date}T00:00:00`);
+        if (!Number.isNaN(date.getTime())) document.getElementById("instagram-snapshot-label").textContent = `Manually maintained Instagram figures, last updated ${new Intl.DateTimeFormat("en", { day: "numeric", month: "short", year: "numeric" }).format(date)}; not live statistics.`;
+      }
+      if (typeof settings.logo_path === "string" && data.logoUrl) {
+        document.querySelectorAll(".brand-logo").forEach(image => { image.src = data.logoUrl; });
+      }
+      const colors = [["brand_primary", "--brand-teal"], ["brand_sage", "--green"], ["brand_cream", "--cream"], ["brand_butter", "--yellow"], ["brand_blush", "--coral"]];
+      colors.forEach(([key, token]) => {
+        if (typeof settings[key] === "string" && /^#[0-9a-f]{6}$/i.test(settings[key])) document.documentElement.style.setProperty(token, settings[key]);
+      });
+      document.querySelectorAll("[data-game-key]").forEach(card => {
+        const game = data.games?.find(item => item.game_key === card.dataset.gameKey);
+        if (game) card.hidden = !game.is_enabled;
+      });
+      document.getElementById("storefront-feedback").hidden = true;
+      document.querySelector(".section-heading #shop-title + p")?.replaceChildren("Explore the current products and prices from the shop's catalogue.");
+      document.querySelector(".footer-bottom > span").textContent = `© ${new Date().getFullYear()} The Wild Co.`;
+      renderProducts();
+      updateSummary();
+      applyAffirmationSettings();
+      resetHunt();
+      resetMemory();
+    };
+    renderBuilderProducts();
+    renderPackagingOptions();
+    document.getElementById("packaging-select").addEventListener("change", event => {
+      selectedPackaging = packagingOptions.find(item => item.id === event.target.value) || null;
+      updateSummary();
+    });
+    document.getElementById("delivery-zone-select").addEventListener("change", event => {
+      selectedDeliveryZone = deliveryZones.find(zone => zone.id === event.target.value) || null;
+      updateSummary();
+    });
+    document.getElementById("product-grid").addEventListener("change", event => {
+      if (!event.target.matches(".variant-select")) return;
+      selectedVariantIds[event.target.dataset.product] = event.target.value;
+      renderProducts(); renderBuilderProducts(); updateSummary();
+    });
+    builderProducts.addEventListener("change", event => {
+      if (event.target.matches(".variant-select")) {
+        selectedVariantIds[event.target.dataset.product] = event.target.value;
+        renderProducts(); renderBuilderProducts(); updateSummary();
+      } else updateSummary();
+    });
+    document.querySelectorAll(".box-choice").forEach(button => button.addEventListener("click", () => {
+      selectedBox = button.dataset.box;
+      document.querySelectorAll(".box-choice").forEach(option => option.setAttribute("aria-pressed", String(option === button)));
+      document.getElementById("summary-box").textContent = selectedBox;
+    }));
+
+    function selectedProducts() {
+      const selected = new Set([...builderProducts.querySelectorAll("input:checked")].map(input => input.value));
+      return products.filter(product => selected.has(product.id)).map(product => {
+        const variant = selectedVariantFor(product);
+        return {
+          ...product,
+          variant_id: variant?.id || null,
+          variant_name: variant?.name || "",
+          price: product.price + (variant?.price_delta_lkr || 0),
+        };
+      });
+    }
+    function updateSummary() {
+      const chosen = selectedProducts();
+      const itemTotal = chosen.reduce((sum, product) => sum + product.price, 0);
+      const total = itemTotal + (selectedPackaging?.price_lkr || 0) + (selectedDeliveryZone?.fee_lkr || 0);
+      document.getElementById("summary-items").innerHTML = chosen.length
+        ? chosen.map(product => `<div class="summary-line"><span>${escapeHtml(product.name)}${product.variant_name ? ` · ${escapeHtml(product.variant_name)}` : ""}</span><strong>${money(product.price)}</strong></div>`).join("")
+        : `<p class="summary-note">Your gift is waiting for its first little thing.</p>`;
+      document.getElementById("summary-total").textContent = money(total);
+      const summaryItems = document.getElementById("summary-items");
+      if (selectedPackaging) {
+        summaryItems.insertAdjacentHTML("beforeend", `<div class="summary-line"><span>Packaging · ${escapeHtml(selectedPackaging.name)}</span><strong>${money(selectedPackaging.price_lkr)}</strong></div>`);
+      }
+      if (selectedDeliveryZone) {
+        summaryItems.insertAdjacentHTML("beforeend", `<div class="summary-line"><span>Delivery · ${escapeHtml(selectedDeliveryZone.name)}</span><strong>${money(selectedDeliveryZone.fee_lkr)}</strong></div>`);
+      } else if (deliveryZones.length) {
+        summaryItems.insertAdjacentHTML("beforeend", `<div class="summary-line"><span>Delivery area</span><strong>Choose an area</strong></div>`);
+      }
+      document.getElementById("cart-count").textContent = chosen.length;
+      document.querySelector(".cart-pill").setAttribute("aria-label", `Gift box selection, ${chosen.length} ${chosen.length === 1 ? "item" : "items"}`);
+      const packagingFits = !selectedPackaging ||
+        (chosen.length >= selectedPackaging.min_items &&
+          (selectedPackaging.max_items === null || chosen.length <= selectedPackaging.max_items));
+      const deliverySelected = !deliveryZones.length || selectedDeliveryZone !== null;
+      const feedback = document.getElementById("order-feedback");
+      const orderButton = document.getElementById("whatsapp-order");
+      if (!packagingFits && selectedPackaging) {
+        feedback.textContent = `Choose ${selectedPackaging.min_items}${selectedPackaging.max_items === null ? " or more" : `–${selectedPackaging.max_items}`} items for this packaging.`;
+      } else if (!deliverySelected) {
+        feedback.textContent = "Choose a delivery area to include its fee in the estimate.";
+      } else if (feedback.textContent.startsWith("Choose ") &&
+        (feedback.textContent.includes(" items for this packaging.") || feedback.textContent === "Choose a delivery area to include its fee in the estimate.")) {
+        feedback.textContent = "";
+      }
+      orderButton.disabled = !storeOpen || !packagingFits || !deliverySelected;
+    }
+    builderProducts.addEventListener("change", updateSummary);
+    document.getElementById("product-grid").addEventListener("click", event => {
+      const button = event.target.closest(".add-to-box");
+      if (!button) return;
+      const checkbox = document.getElementById(`pick-${button.dataset.product}`);
+      checkbox.checked = true;
+      updateSummary();
+      button.textContent = "Added ✓";
+      window.setTimeout(() => { button.textContent = "Add to gift box"; }, 1200);
+    });
+
+    document.getElementById("whatsapp-order").addEventListener("click", () => {
+      const feedback = document.getElementById("order-feedback");
+      const chosen = selectedProducts();
+      if (!chosen.length) {
+        feedback.textContent = "Choose at least one available product before preparing your message.";
+        return;
+      }
+      if (!/^[1-9]\d{7,14}$/.test(WHATSAPP_NUMBER)) {
+        feedback.textContent = "WhatsApp ordering isn't configured yet. The shop owner needs to add the business number in international digits-only format.";
+        return;
+      }
+      if (!window.createWildOrder) {
+        feedback.textContent = "Secure order service isn't configured yet. Please contact the shop directly to check availability.";
+        return;
+      }
+      const recipient = document.getElementById("recipient").value.trim();
+      const sender = document.getElementById("sender").value.trim();
+      const customerName = sender;
+      const customerPhone = document.getElementById("customer-phone").value.trim();
+      const deliveryAddress = document.getElementById("delivery-address").value.trim();
+      const note = document.getElementById("gift-message").value.trim();
+      const couponCode = document.getElementById("coupon-code").value.trim().toUpperCase();
+      const occasion = document.getElementById("occasion").value;
+      const giftMessage = [recipient ? `For ${recipient}` : "", sender ? `From ${sender}` : "", occasion ? `Occasion: ${occasion}` : "", note].filter(Boolean).join(" · ");
+      if (customerName.length < 1 || !/^[+0-9][0-9+() \-]{5,31}$/.test(customerPhone) || deliveryAddress.length < 5) {
+        feedback.textContent = "Add your name, a contact number and delivery address so the shop can follow up.";
+        return;
+      }
+      if (giftMessage.length > 400) {
+        feedback.textContent = "Shorten the recipient, sender or personal note so the saved gift message is under 400 characters.";
+        return;
+      }
+      const selectedBoxAtSubmit = selectedBox;
+      const packagingAtSubmit = selectedPackaging;
+      const deliveryZoneAtSubmit = selectedDeliveryZone;
+      const popup = window.open("about:blank", "_blank");
+      if (!popup) {
+        feedback.textContent = "Please allow pop-ups for this site so your prepared WhatsApp message can open safely.";
+        return;
+      }
+      popup.document.title = "Preparing your gift enquiry…";
+      popup.document.body.textContent = "Saving your enquiry securely…";
+      const button = document.getElementById("whatsapp-order");
+      button.disabled = true;
+      feedback.textContent = "Saving your gift enquiry securely…";
+      window.createWildOrder({
+        customer_name: customerName, contact_number: customerPhone, delivery_address: deliveryAddress,
+        gift_message: giftMessage,
+        items: chosen.map(product => ({ product_id: product.id, variant_id: product.variant_id, quantity: 1 })),
+        packaging_id: packagingAtSubmit?.id || null,
+        delivery_zone_id: deliveryZoneAtSubmit?.id || null,
+        coupon_code: couponCode,
+      }).then(order => {
+        const lines = order.items.map(item => `• ${item.product_name}${item.variant_name ? ` · ${item.variant_name}` : ""} × ${item.quantity} — ${money(item.line_total_lkr)}`).join("\n");
+        const message = [
+          "Hello The Wild Co.! I'd love to ask about a gift-box order.",
+          `Order reference: ${order.order_number}`,
+          `Box style: ${selectedBoxAtSubmit}`,
+          packagingAtSubmit ? `Packaging: ${packagingAtSubmit.name} — ${money(order.packaging_charge_lkr)}` : "",
+          order.delivery_zone_name ? `Delivery: ${order.delivery_zone_name} — ${money(order.delivery_charge_lkr)}` : "Delivery fee: to be confirmed by the shop",
+          recipient ? `For: ${recipient}` : "",
+          sender ? `From: ${sender}` : "",
+          occasion ? `Occasion: ${occasion}` : "",
+          `Items:\n${lines}`,
+          note ? `Personal message: ${note}` : "",
+          `Items: ${money(order.subtotal_lkr)}`,
+          `Packaging: ${money(order.packaging_charge_lkr)}`,
+          `Delivery: ${money(order.delivery_charge_lkr)}`,
+          order.coupon_code ? `Coupon ${order.coupon_code}: −${money(order.discount_lkr)}` : "",
+          `Estimated total: ${money(order.total_lkr)}`,
+          "This enquiry is not confirmed or paid. Please confirm availability, delivery and the final total. Thank you!"
+        ].filter(Boolean).join("\n\n");
+        popup.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        feedback.textContent = `Enquiry ${order.order_number} saved. Opening WhatsApp does not confirm the order or payment.`;
+      }).catch(error => {
+        popup.close();
+        feedback.textContent = `We couldn't save the enquiry: ${error.message || "Please check your connection and try again."}`;
+      }).finally(updateSummary);
+    });
+    ["recipient", "sender", "customer-phone", "delivery-address", "gift-message", "occasion", "coupon-code"].forEach(id => document.getElementById(id).addEventListener("input", () => { document.getElementById("order-feedback").textContent = ""; }));
+
+    const huntEmojis = ["🍓", "🍋", "🕯️", "🌱", "🎁"];
+    function gameSetting(key, name, fallback) {
+      const value = activeGameSettings[key]?.[name];
+      return value === undefined ? fallback : value;
+    }
+    function applyBudgetSettings() {
+      const input = document.getElementById("budget-input");
+      const configuredMin = gameSetting("budget_challenge", "min_budget_lkr", 1);
+      const configuredMax = gameSetting("budget_challenge", "max_budget_lkr", 100000000);
+      const minimum = Number.isSafeInteger(configuredMin) && configuredMin > 0 ? configuredMin : 1;
+      const maximum = Number.isSafeInteger(configuredMax) && configuredMax >= minimum ? configuredMax : 100000000;
+      input.min = String(minimum);
+      input.max = String(maximum);
+      input.placeholder = `e.g. ${Math.max(3000, minimum)}`;
+    }
+    function resetHunt() {
+      const board = document.getElementById("hunt-board");
+      board.innerHTML = huntEmojis.map((emoji, index) => `<button class="hunt-target" type="button" aria-label="Find hidden character ${index + 1}">${["✿", "✧", "♡", "☼", "☆"][index]}</button>`).join("");
+      document.getElementById("hunt-status").textContent = "0 of 5 found";
+      board.querySelectorAll("button").forEach((button, index) => button.addEventListener("click", () => {
+        if (button.classList.contains("found")) return;
+        button.classList.add("found");
+        button.textContent = huntEmojis[index];
+        button.setAttribute("aria-label", `Found ${["strawberry", "lemon", "candle", "plant", "gift box"][index]}`);
+        const found = board.querySelectorAll(".found").length;
+        document.getElementById("hunt-status").textContent = found === 5 ? String(gameSetting("little_hunt", "reward", "All five friends found! A little joy looks good on you ♡")) : `${found} of 5 found`;
+      }));
+    }
+    document.getElementById("hunt-reset").addEventListener("click", resetHunt);
+    resetHunt();
+
+    const memorySymbols = ["🍓", "🍋", "🕯️", "🌱", "🎁", "🍐"];
+    let memoryPairCount = 4;
+    let firstCard = null, lockBoard = false, moves = 0, pairs = 0, memoryFlipTimer = 0;
+    function resetMemory() {
+      window.clearTimeout(memoryFlipTimer);
+      firstCard = null; lockBoard = false; moves = 0; pairs = 0;
+      const configuredPairs = gameSetting("memory_match", "pairs", 4);
+      memoryPairCount = Number.isSafeInteger(configuredPairs) ? Math.min(6, Math.max(2, configuredPairs)) : 4;
+      const faces = memorySymbols.slice(0, memoryPairCount);
+      const shuffled = [...faces, ...faces].sort(() => Math.random() - .5);
+      const board = document.getElementById("memory-board");
+      board.innerHTML = shuffled.map((face, index) => `<button class="memory-card" type="button" aria-label="Face-down card ${index + 1}" aria-pressed="false" data-face="${face}">?</button>`).join("");
+      document.getElementById("memory-status").textContent = `Moves: 0 · Pairs: 0/${memoryPairCount}`;
+      board.querySelectorAll(".memory-card").forEach(card => card.addEventListener("click", () => {
+        if (lockBoard || card.getAttribute("aria-pressed") === "true" || card.classList.contains("matched")) return;
+        card.setAttribute("aria-pressed", "true");
+        card.textContent = card.dataset.face;
+        card.setAttribute("aria-label", `Revealed ${card.dataset.face}`);
+        if (!firstCard) { firstCard = card; return; }
+        moves++;
+        if (firstCard.dataset.face === card.dataset.face) {
+          firstCard.classList.add("matched"); card.classList.add("matched");
+          pairs++; firstCard = null;
+          updateMemoryStatus();
+        } else {
+          lockBoard = true;
+          const previous = firstCard;
+          firstCard = null;
+          updateMemoryStatus();
+          memoryFlipTimer = window.setTimeout(() => {
+            [previous, card].forEach(item => {
+              item.setAttribute("aria-pressed", "false");
+              item.textContent = "?";
+              item.setAttribute("aria-label", "Face-down card");
+            });
+            lockBoard = false;
+          }, 750);
+        }
+      }));
+    }
+    function updateMemoryStatus() {
+      document.getElementById("memory-status").textContent = pairs === memoryPairCount ? `You found all the pairs in ${moves} moves! Lovely matching.` : `Moves: ${moves} · Pairs: ${pairs}/${memoryPairCount}`;
+    }
+    document.getElementById("memory-reset").addEventListener("click", resetMemory);
+    resetMemory();
+
+    let moodRecommendations = {
+      "Cosy and Calm": ["bloom", "lagoon"],
+      "Bright and Playful": ["bubble", "card"],
+      "Thoughtful and Meaningful": ["affirmations", "card"],
+      "Creative and Colourful": ["stationery", "affirmations"]
+    };
+    document.querySelectorAll(".mood-choice").forEach(button => button.addEventListener("click", () => {
+      const configuredMoodRecommendations = gameSetting("gift_mood", "recommendations", {});
+      if (configuredMoodRecommendations && typeof configuredMoodRecommendations === "object" && !Array.isArray(configuredMoodRecommendations)) {
+        moodRecommendations = { ...moodRecommendations, ...configuredMoodRecommendations };
+      }
+      const configuredIds = moodRecommendations[button.dataset.mood];
+      const ids = Array.isArray(configuredIds) ? configuredIds.filter(id => typeof id === "string") : [];
+      const picks = products.filter(product => ids.includes(product.id));
+      document.getElementById("mood-status").textContent = `${button.dataset.mood}: ${picks.map(product => `${product.name} (${money(product.price)})`).join(" + ")}. Choose one in the Gift Lab to add it.`;
+      document.querySelectorAll(".mood-choice").forEach(choice => choice.setAttribute("aria-pressed", String(choice === button)));
+    }));
+    document.getElementById("mood-reset").addEventListener("click", () => {
+      document.getElementById("mood-status").textContent = "Choose a mood to meet a little favourite.";
+      document.querySelectorAll(".mood-choice").forEach(choice => choice.removeAttribute("aria-pressed"));
+    });
+
+    let affirmations = [
+      "You are allowed to grow at your own pace.",
+      "Small steps still take you somewhere lovely.",
+      "You bring a little light just by being you.",
+      "Rest is part of the good work you do.",
+      "You deserve the same kindness you give away.",
+      "There is no one quite like you, and that's a lovely thing."
+    ];
+    function applyAffirmationSettings() {
+      const configured = gameSetting("affirmation", "messages", null);
+      if (Array.isArray(configured)) {
+        const messages = configured.filter(message => typeof message === "string" && message.trim()).slice(0, 100);
+        if (messages.length) affirmations = messages;
+      }
+    }
+    applyAffirmationSettings();
+    let currentAffirmation = "";
+    document.getElementById("affirmation-button").addEventListener("click", () => {
+      const options = affirmations.filter(item => item !== currentAffirmation);
+      currentAffirmation = options[Math.floor(Math.random() * options.length)];
+      document.getElementById("affirmation-box").textContent = currentAffirmation;
+      document.getElementById("affirmation-status").textContent = "";
+    });
+    document.getElementById("copy-affirmation").addEventListener("click", async () => {
+      const status = document.getElementById("affirmation-status");
+      if (!currentAffirmation) { status.textContent = "Pick a little reminder first."; return; }
+      try {
+        await navigator.clipboard.writeText(currentAffirmation);
+        status.textContent = "Copied — share a little kindness ♡";
+      } catch {
+        status.textContent = "Copy isn't available here. You can select and copy the reminder above.";
+      }
+    });
+
+    function suggestBudgetCombo() {
+      const result = document.getElementById("budget-result");
+      const budget = Number(document.getElementById("budget-input").value);
+      const minimum = Number(document.getElementById("budget-input").min) || 1;
+      const maximum = Number(document.getElementById("budget-input").max) || 100000000;
+      if (!Number.isSafeInteger(budget) || budget < minimum || budget > maximum) {
+        result.hidden = false;
+        result.textContent = `Enter a whole-number budget between ${money(minimum)} and ${money(maximum)} LKR.`;
+        return;
+      }
+      const available = products.filter(product => product.available !== false).map(product => {
+        const variants = Array.isArray(product.variants) ? product.variants : [];
+        const cheapest = variants.slice().sort((a, b) => a.price_delta_lkr - b.price_delta_lkr)[0] || null;
+        return {
+          ...product,
+          variant_id: cheapest?.id || null,
+          variant_name: cheapest?.name || "",
+          price: product.price + (cheapest?.price_delta_lkr || 0),
+        };
+      }).sort(() => Math.random() - .5);
+      const chosen = [];
+      let total = 0;
+      for (const product of available) {
+        if (total + product.price <= budget && (chosen.length < 1 || Math.random() > .38)) {
+          chosen.push(product);
+          total += product.price;
+        }
+      }
+      if (!chosen.length) {
+        result.hidden = false;
+        result.textContent = `We couldn't find an item under ${money(budget)} just now. Try a little more or choose another amount.`;
+        return;
+      }
+      result.hidden = false;
+      result.innerHTML = `<strong>Your little combo:</strong> ${chosen.map(product => `${escapeHtml(product.name)} (${money(product.price)})`).join(" + ")}<br><strong>Total: ${money(total)}</strong> — within your ${money(budget)} budget. Box and delivery are not included.<br><button class="button secondary budget-add" type="button" style="margin-top:10px">Add these to my gift box</button>`;
+      result.querySelector(".budget-add").addEventListener("click", () => {
+        chosen.forEach(product => {
+          document.getElementById(`pick-${product.id}`).checked = true;
+          if (product.variant_id) selectedVariantIds[product.id] = product.variant_id;
+        });
+        renderProducts();
+        renderBuilderProducts();
+        updateSummary();
+        result.querySelector(".budget-add").textContent = "Added to your box ✓";
+      });
+    }
+    document.getElementById("budget-button").addEventListener("click", suggestBudgetCombo);
+    document.getElementById("budget-again").addEventListener("click", suggestBudgetCombo);
+
+    const menuToggle = document.getElementById("menu-toggle");
+    menuToggle.addEventListener("click", () => {
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!expanded));
+      menuToggle.setAttribute("aria-label", expanded ? "Open menu" : "Close menu");
+      document.getElementById("main-nav").classList.toggle("open", !expanded);
+    });
+    document.querySelectorAll("#main-nav a").forEach(link => link.addEventListener("click", () => {
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open menu");
+      document.getElementById("main-nav").classList.remove("open");
+    }));
+
+    renderProducts();
+    updateSummary();
+  </script>
+  <script type="module" src="/src/storefront.ts"></script>
+</body>
+</html>
