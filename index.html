@@ -96,17 +96,6 @@
     .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 27px; }
     .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 26px; color: #61766b; font-size: .78rem; font-weight: 700; }
     .hero-note span { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 50%; background: rgba(255,255,255,.65); }
-    .instagram-proof { padding: 27px max(5vw, 22px); border-bottom: 1px solid var(--line); background: var(--paper); }
-    .instagram-proof-inner { max-width: 1030px; display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 0 auto; }
-    .instagram-proof-inner > .instagram-caption { flex-basis: 100%; text-align: right; }
-    .instagram-profile { display: flex; align-items: center; gap: 12px; }
-    .instagram-profile .brand-logo { width: 48px; height: 48px; }
-    .instagram-handle { display: block; font-size: .9rem; font-weight: 900; }
-    .instagram-caption { display: block; color: var(--muted); font-size: .72rem; }
-    .instagram-stats { display: flex; align-items: center; gap: clamp(18px, 5vw, 58px); }
-    .instagram-stat { color: var(--muted); font-size: .77rem; }
-    .instagram-stat strong { display: block; color: var(--ink); font-size: 1rem; }
-    .instagram-proof .button { min-height: 42px; padding: 9px 16px; font-size: .76rem; background: var(--brand-teal); color: #173c38; }
     .custom-story-section { padding: 36px 22px; background: var(--cream); }
     .custom-story-card { max-width: 860px; margin: auto; padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); }
     .custom-story-card h2 { margin: 0 0 10px; }
@@ -263,11 +252,6 @@
       .header-actions { margin-left: auto; }
       .cart-pill { min-height: 40px; padding: 0 11px; font-size: .75rem; }
       .section { padding: 65px 18px; }
-      .instagram-proof { padding: 20px 18px; }
-      .instagram-proof-inner { flex-wrap: wrap; gap: 15px; }
-      .instagram-stats { order: 3; width: 100%; justify-content: space-between; }
-      .instagram-proof .button { margin-left: auto; }
-      .instagram-proof-inner > .instagram-caption { order: 4; text-align: left; }
       .section-heading { align-items: start; flex-direction: column; margin-bottom: 23px; }
       .hero-inner { grid-template-columns: 1fr; gap: 0; min-height: auto; padding-top: 51px; padding-bottom: 32px; }
       .hero-copy > p { font-size: .98rem; }
@@ -387,22 +371,6 @@
       </div>
     </section>
     <div id="custom-homepage-sections"></div>
-
-    <section class="instagram-proof" aria-label="The Wild Co. Instagram profile snapshot">
-      <div class="instagram-proof-inner">
-        <a class="instagram-profile" href="https://www.instagram.com/thewildcoshop/" target="_blank" rel="noopener noreferrer" aria-label="Visit The Wild Co. Instagram profile, @thewildcoshop">
-          <img class="brand-logo" src="assets/the-wild-co-logo.png" alt="">
-          <span><span class="instagram-handle" id="instagram-handle">@thewildcoshop</span><span class="instagram-caption">A little look at our Instagram</span></span>
-        </a>
-        <div class="instagram-stats" aria-label="Figures from the supplied Instagram screenshot, captured 28 October 2026">
-          <span class="instagram-stat"><strong id="instagram-posts">54</strong> posts</span>
-          <span class="instagram-stat"><strong id="instagram-followers">326</strong> followers</span>
-          <span class="instagram-stat"><strong id="instagram-stats-handle">@thewildcoshop</strong> Instagram</span>
-        </div>
-        <a class="button" href="https://www.instagram.com/thewildcoshop/" target="_blank" rel="noopener noreferrer">Visit Instagram <span aria-hidden="true">↗</span></a>
-        <span class="instagram-caption" id="instagram-snapshot-label"></span>
-      </div>
-    </section>
 
     <section class="section" aria-labelledby="category-title">
       <div class="section-inner">
@@ -781,11 +749,6 @@
       }
       if (typeof settings.hero_title === "string") document.getElementById("hero-title").textContent = settings.hero_title;
       if (typeof settings.hero_description === "string") document.getElementById("hero-description").textContent = settings.hero_description;
-      if (typeof settings.instagram_handle === "string") {
-        document.getElementById("instagram-handle").textContent = settings.instagram_handle;
-        document.getElementById("instagram-stats-handle").textContent = settings.instagram_handle;
-        document.querySelectorAll('a[href*="instagram.com/"]').forEach(link => { link.href = settings.instagram_url || `https://www.instagram.com/${settings.instagram_handle.replace(/^@/, "")}/`; });
-      }
       activeGameSettings = Object.fromEntries((data.games || []).map(game => [game.game_key, game.settings || {}]));
       applyBudgetSettings();
       data.games?.forEach(game => {
@@ -818,12 +781,6 @@
         wrapper.append(card);
         storyRoot.append(wrapper);
       });
-      if (Number.isSafeInteger(settings.instagram_posts)) document.getElementById("instagram-posts").textContent = String(settings.instagram_posts);
-      if (Number.isSafeInteger(settings.instagram_followers)) document.getElementById("instagram-followers").textContent = String(settings.instagram_followers);
-      if (typeof settings.instagram_snapshot_date === "string") {
-        const date = new Date(`${settings.instagram_snapshot_date}T00:00:00`);
-        if (!Number.isNaN(date.getTime())) document.getElementById("instagram-snapshot-label").textContent = `Manually maintained Instagram figures, last updated ${new Intl.DateTimeFormat("en", { day: "numeric", month: "short", year: "numeric" }).format(date)}; not live statistics.`;
-      }
       if (typeof settings.logo_path === "string" && data.logoUrl) {
         document.querySelectorAll(".brand-logo").forEach(image => { image.src = data.logoUrl; });
       }

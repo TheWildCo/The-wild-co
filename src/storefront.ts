@@ -1,4 +1,5 @@
 import { createClient, FunctionsHttpError, type SupabaseClient } from "@supabase/supabase-js";
+import logoAssetUrl from "../assets/the-wild-co-logo.png";
 
 type StorefrontProduct = {
   id: string;
@@ -114,6 +115,15 @@ const url = import.meta.env.VITE_SUPABASE_URL?.trim();
 const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim();
 if (url && anonKey) {
   const supabase = createClient(url, anonKey);
+  window.setWildStorefront?.({
+    products: [],
+    categories: [],
+    packagingOptions: [],
+    settings: {},
+    games: [],
+    deliveryZones: [],
+    homepageSections: [],
+  });
   const feedback = document.getElementById("storefront-feedback");
   if (feedback) {
     feedback.textContent = "Loading the latest shop details…";
@@ -224,7 +234,7 @@ async function loadStorefront(client: SupabaseClient<any, "public">) {
     ? /^https?:\/\//i.test(settingsLogo)
       ? settingsLogo
       : settingsLogo.startsWith("assets/")
-        ? `/${settingsLogo}`
+      ? logoAssetUrl
         : client.storage.from("store-images").getPublicUrl(settingsLogo).data.publicUrl
     : undefined;
 

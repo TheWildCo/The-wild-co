@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import type { Session } from "@supabase/supabase-js";
+import logoAssetUrl from "../../assets/the-wild-co-logo.png";
 import { supabase } from "./supabase";
 
 type Role = "owner" | "manager" | "order_staff";
@@ -133,7 +134,7 @@ export function AdminApp() {
 }
 
 function Logo({ small = false }: { small?: boolean }) {
-  return <img className={`admin-logo${small ? " small" : ""}`} src={`${import.meta.env.BASE_URL}assets/the-wild-co-logo.png`} alt="The Wild Co. logo" />;
+  return <img className={`admin-logo${small ? " small" : ""}`} src={logoAssetUrl} alt="The Wild Co. logo" />;
 }
 
 function SetupScreen() {
