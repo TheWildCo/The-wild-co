@@ -75,17 +75,19 @@ Add every exact browser origin that will send enquiries, including a separate `h
 3. With the non-production project configured, verify actual admin writes and RLS for owner, manager and order-staff accounts; upload and view a product image; confirm storefront product/variant/settings reads; create a coupon-backed order enquiry; compare server totals and WhatsApp message; test invalid/expired/used-up coupons, unavailable stock/variants, missing delivery area, and a paused store.
 4. Verify the deployed function's CORS and rate-limit behavior, HTTPS site URL/redirect settings, and production domain origin before accepting customer enquiries. An order is an **unconfirmed and unpaid enquiry**. Stock is checked but is not reserved or decremented. Coupon usage is counted when an enquiry is saved, not when it is paid or confirmed.
 
-## Free-tier static hosting
+## GitHub Pages deployment
 
-Cloudflare Pages Free is a practical static-hosting option:
+The GitHub Pages project URL uses the repository subpath `/The-wild-co/`. Vite is configured to build the storefront and admin entry points for that path.
 
-1. Push the repository to a Git provider and connect it to Cloudflare Pages.
-2. Set the build command to `npm ci && npm run build` and the output directory to `dist` (no separate functions directory is required).
-3. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as build environment variables in the Cloudflare Pages project. They are public client configuration, not secrets.
-4. Deploy and verify both `https://YOUR_DOMAIN/` and `https://YOUR_DOMAIN/admin.html`, including a direct refresh of the admin path.
-5. Add the deployed HTTPS origin to `ALLOWED_ORIGINS` and Supabase Auth's allowed redirect URLs. Repeat the build after changing the Supabase project or public keys.
+1. In GitHub, open the repository's **Settings → Pages** and set the build/deployment source to **GitHub Actions**.
+2. Under **Settings → Secrets and variables → Actions → Variables**, add:
+   - `VITE_SUPABASE_URL` = the Supabase project URL.
+   - `VITE_SUPABASE_ANON_KEY` = the Supabase publishable key. This is public client configuration, not a secret.
+3. Push the repository to the `main` or `master` branch, or manually run **Deploy GitHub Pages** from the **Actions** tab.
+4. Wait for both workflow jobs to succeed. The storefront is `https://thewildco.github.io/The-wild-co/`; the admin is `https://thewildco.github.io/The-wild-co/admin.html`.
+5. Add the exact deployed origin `https://thewildco.github.io` to the Edge Function `ALLOWED_ORIGINS` and Supabase Auth's allowed redirect URLs. Rebuild and deploy after changing repository variables.
 
-Equivalent static hosts may be used if they serve both HTML entry points and the `dist/assets/` files without rewriting `/admin.html` to a missing path.
+Never set a service-role key as a repository variable or secret for this frontend workflow. GitHub Pages only hosts the built static files; the service-role key remains in the Supabase Edge Function runtime.
 
 ## Admin and storefront capabilities
 

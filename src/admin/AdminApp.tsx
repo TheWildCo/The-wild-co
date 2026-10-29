@@ -133,7 +133,7 @@ export function AdminApp() {
 }
 
 function Logo({ small = false }: { small?: boolean }) {
-  return <img className={`admin-logo${small ? " small" : ""}`} src="/assets/the-wild-co-logo.png" alt="The Wild Co. logo" />;
+  return <img className={`admin-logo${small ? " small" : ""}`} src={`${import.meta.env.BASE_URL}assets/the-wild-co-logo.png`} alt="The Wild Co. logo" />;
 }
 
 function SetupScreen() {
@@ -143,7 +143,7 @@ function SetupScreen() {
       <p>Add your Supabase project URL and public anon key to a local <code>.env</code> file, then apply the database migration.</p>
       <pre>VITE_SUPABASE_URL=https://YOUR_PROJECT_ID.supabase.co{"\n"}VITE_SUPABASE_ANON_KEY=YOUR_PUBLIC_ANON_KEY</pre>
       <p className="muted">Only the public anon key belongs in this frontend. Never place a service-role key here.</p>
-      <a className="button-link" href="/">Back to The Wild Co.</a>
+      <a className="button-link" href={import.meta.env.BASE_URL}>Back to The Wild Co.</a>
     </section>
   </main>;
 }
@@ -240,7 +240,7 @@ function Dashboard({ role, email, userId }: { role: Role; email: string; userId:
   }
   return <div className="admin-layout">
     <aside className="admin-sidebar">
-      <a className="admin-brand" href="/"><Logo small /><span><strong>The Wild Co.</strong><small>little gifts, big feelings</small></span></a>
+      <a className="admin-brand" href={import.meta.env.BASE_URL}><Logo small /><span><strong>The Wild Co.</strong><small>little gifts, big feelings</small></span></a>
       <p className="nav-caption">YOUR LITTLE SHOP</p>
       <nav className="admin-nav" aria-label="Admin navigation">
         {tabs.map(item => <button key={item} type="button" className={tab === item ? "active" : ""} onClick={() => setTab(item)}><span aria-hidden="true">{iconFor(item)}</span>{tabLabels[item]}</button>)}
@@ -248,7 +248,7 @@ function Dashboard({ role, email, userId }: { role: Role; email: string; userId:
       <div className="sidebar-bottom"><span className="role-pill">{role.replace("_", " ")}</span><span className="signed-in">{email}</span><button className="quiet-button" onClick={signOut}>Sign out ↗</button></div>
     </aside>
     <main className="admin-main">
-      <header className="admin-topbar"><div><span className="eyebrow">The Wild Co. · Admin</span><h1>{tabLabels[tab]}</h1></div><a className="preview-link" href="/" target="_blank" rel="noreferrer">View the shop ↗</a></header>
+      <header className="admin-topbar"><div><span className="eyebrow">The Wild Co. · Admin</span><h1>{tabLabels[tab]}</h1></div><a className="preview-link" href={import.meta.env.BASE_URL} target="_blank" rel="noreferrer">View the shop ↗</a></header>
       {toast && <p className="toast" role="status">{toast}</p>}
       <div className="admin-content">
         {tab === "overview" && <Overview onOpenOrders={() => setTab("orders")} />}

@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import { fileURLToPath } from "node:url";
 
 export default defineConfig({
+  base: "/The-wild-co/",
   plugins: [react()],
   build: {
     rollupOptions: {
