@@ -328,6 +328,7 @@ function ProductsPage({ notify }: { notify: (message: string) => void }) {
   const [error, setError] = useState("");
   const [editing, setEditing] = useState<Product | null>(null);
   const [adding, setAdding] = useState(false);
+  const [publishingId, setPublishingId] = useState<string | null>(null);
   async function load() {
     if (!supabase) return;
     setLoading(true); setError("");
@@ -368,6 +369,21 @@ function ProductsPage({ notify }: { notify: (message: string) => void }) {
     } else notify("Product deleted.");
     await load();
   }
+  async function togglePublished(product: Product) {
+    if (!supabase) return;
+    setPublishingId(product.id);
+    setError("");
+    const { error: updateError } = await supabase.from("products")
+      .update({ is_published: !product.is_published })
+      .eq("id", product.id);
+    setPublishingId(null);
+    if (updateError) {
+      setError(`Could not ${product.is_published ? "unpublish" : "publish"} “${product.name}”: ${updateError.message}`);
+      return;
+    }
+    notify(product.is_published ? "Product unpublished." : "Product published.");
+    await load();
+  }
   const imageByProduct = (id: string) => images.find(image => image.product_id === id && image.is_primary) ?? images.find(image => image.product_id === id);
   return <section className="panel">
     <div className="panel-heading"><div><span className="eyebrow">Your catalogue</span><h2>Little things in the shop</h2><p>{total} product{total === 1 ? "" : "s"} · published products show on the customer site</p></div><button className="button-link" onClick={() => { setEditing(null); setAdding(true); }}>＋ Add a product</button></div>
@@ -377,7 +393,7 @@ function ProductsPage({ notify }: { notify: (message: string) => void }) {
       return <article className="product-admin-row" key={product.id}>
         {image ? <img src={imageUrl(image.storage_path)} alt={image.alt_text || product.name} /> : <span className="image-placeholder">✿</span>}
         <div className="product-admin-info"><strong>{product.name}</strong><span>{money(product.price_lkr)}{product.sale_price_lkr != null ? ` · sale ${money(product.sale_price_lkr)}` : ""}</span><span>{product.stock_quantity} in stock · {product.is_published ? "Published" : "Draft"}{product.is_featured ? " · Featured" : ""}</span></div>
-        <div className="row-actions"><button className="quiet-button" onClick={() => { setEditing(product); setAdding(true); }}>Edit</button><button className="quiet-button danger-text" onClick={() => void deleteProduct(product)}>Delete</button></div>
+        <div className="row-actions"><button className="quiet-button" disabled={publishingId === product.id} onClick={() => void togglePublished(product)}>{publishingId === product.id ? "Saving…" : product.is_published ? "Unpublish" : "Publish"}</button><button className="quiet-button" onClick={() => { setEditing(product); setAdding(true); }}>Edit</button><button className="quiet-button danger-text" onClick={() => void deleteProduct(product)}>Delete</button></div>
       </article>;
     })}</div> : <EmptyState title="Your catalogue is ready for its first product" text="Add a product to get started. It will only appear publicly once you publish it." />}
     <Pagination page={page} total={total} onPage={setPage} />
